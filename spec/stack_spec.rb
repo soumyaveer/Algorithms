@@ -7,7 +7,7 @@ describe Stack do
 
   describe 'initialize' do
     it 'creates an empty stack' do
-      expect(@stack.items).to match([])
+      expect(@stack.items).to match_array([])
     end
   end
 
@@ -73,12 +73,13 @@ describe Stack do
   describe 'isEmpty?' do
     it 'returns false is the stack is not empty' do
       @stack.push(3)
-      p @stack
+
       expect(@stack.isEmpty?).to be_falsey
     end
 
     it 'returns true if the stack is empty' do
       @stack.push(3)
+
       @stack.pop
 
       expect(@stack.isEmpty?).to be_truthy
