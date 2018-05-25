@@ -17,4 +17,9 @@ class Queue
   def front
     @items[0]
   end
+
+  def enqueue(element)
+    @items.push(element)
+    nil
+  end
 end
