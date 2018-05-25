@@ -18,4 +18,8 @@ class Stack
     last_element_index = @items.length - 1
     @items[last_element_index]
   end
+
+  def isEmpty?
+    @items.empty?
+  end
 end

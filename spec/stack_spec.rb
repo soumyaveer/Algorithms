@@ -70,15 +70,18 @@ describe Stack do
     end
   end
 
-  describe 'isEmpty' do
+  describe 'isEmpty?' do
     it 'returns false is the stack is not empty' do
-      expect(@stack.isEmpty).to be_falsey
+      @stack.push(3)
+      p @stack
+      expect(@stack.isEmpty?).to be_falsey
     end
 
     it 'returns true if the stack is empty' do
+      @stack.push(3)
       @stack.pop
 
-      expect(@stack.isEmpty).to be_truthy
+      expect(@stack.isEmpty?).to be_truthy
     end
   end
 
