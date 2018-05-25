@@ -1,5 +1,5 @@
 class Queue
-  # methods: emoty?, enqueue, dequeue, size, front
+  # methods: empty?, enqueue, dequeue, size, front
   attr_accessor :items
 
   # removes the first element from the queue
