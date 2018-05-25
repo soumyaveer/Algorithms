@@ -13,4 +13,9 @@ class Stack
   def pop
     @items.pop
   end
+
+  def peek
+    last_element_index = @items.length - 1
+    @items[last_element_index]
+  end
 end

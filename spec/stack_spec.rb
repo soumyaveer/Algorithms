@@ -60,6 +60,10 @@ describe Stack do
 
   describe 'peek' do
     it 'returns the top element of the stack' do
+      @stack.push(1)
+      @stack.push(2)
+      @stack.push(3)
+
       top_element = @stack.peek
 
       expect(top_element).to eql(3)
