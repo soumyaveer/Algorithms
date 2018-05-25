@@ -16,6 +16,7 @@ describe Queue do
     context 'when data is provided' do
       it 'creates a new queue with elements in it' do
         queue = Queue.new([1, 2, 3, 4])
+
         expect(queue.size).to eql(4)
         expect(queue.empty?).to be_falsey
       end
@@ -31,7 +32,7 @@ describe Queue do
       expect(@queue.front).to eql(1)
     end
 
-    it 'adds more new items at the back of the queue' do
+    it 'adds new items at the back of the queue' do
       @queue.enqueue(1)
       @queue.enqueue(2)
       @queue.enqueue(3)
