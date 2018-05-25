@@ -27,6 +27,10 @@ class Stack
     @items = []
   end
 
+  def size
+    @items.length
+  end
+
   def print
     @items.join(', ')
   end
