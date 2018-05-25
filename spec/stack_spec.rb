@@ -8,15 +8,15 @@ describe Stack do
   describe 'initialize' do
     it 'creates an empty stack when no data is provided' do
       expect(@stack.size).to eql(0)
-      expect(@stack.is_empty?).to be_truthy
+      expect(@stack.empty?).to be_truthy
     end
 
     it 'creates a stack with elements when data is provided' do
-      stack_with_elements = Stack.new(['a', 'b', 'c'])
-      expect(stack_with_elements.size).to eql(3)
-      expect(stack_with_elements.is_empty?).to be_falsy
-      expect(stack_with_elements.peek).to eql('c')
-      expect(stack_with_elements.print).to eql('a, b, c')
+      stack = Stack.new(['a', 'b', 'c'])
+      expect(stack.size).to eql(3)
+      expect(stack.empty?).to be_falsy
+      expect(stack.peek).to eql('c')
+      expect(stack.print).to eql('a, b, c')
     end
   end
 
@@ -85,11 +85,11 @@ describe Stack do
     end
   end
 
-  describe 'is_empty?' do
+  describe 'empty?' do
     it 'returns false is the stack is not empty' do
       @stack.push(3)
 
-      expect(@stack.is_empty?).to be_falsey
+      expect(@stack.empty?).to be_falsey
     end
 
     it 'returns true if the stack is empty' do
@@ -97,7 +97,7 @@ describe Stack do
 
       @stack.pop
 
-      expect(@stack.is_empty?).to be_truthy
+      expect(@stack.empty?).to be_truthy
     end
   end
 
@@ -108,9 +108,9 @@ describe Stack do
       @stack.push(5)
       @stack.push(6)
 
-      expect(@stack.is_empty?).to be_falsey
+      expect(@stack.empty?).to be_falsey
       expect(@stack.clear).to match_array([])
-      expect(@stack.is_empty?).to be_truthy
+      expect(@stack.empty?).to be_truthy
     end
   end
 
