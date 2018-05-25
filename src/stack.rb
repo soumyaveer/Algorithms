@@ -26,4 +26,8 @@ class Stack
   def clear
     @items = []
   end
+
+  def print
+    @items.join(', ')
+  end
 end

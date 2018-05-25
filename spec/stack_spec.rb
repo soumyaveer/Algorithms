@@ -105,7 +105,7 @@ describe Stack do
       @stack.push(9)
       @stack.push(10)
 
-      expect(@stack.print).to eql('7,8,9,10')
+      expect(@stack.print).to eql('7, 8, 9, 10')
     end
   end
 end
