@@ -7,30 +7,36 @@ describe Stack do
 
   describe 'initialize' do
     it 'creates an empty stack' do
-      expect(@stack.items).to match_array([])
+      expect(@stack.size).to eql(0)
+      expect(@stack.is_empty?).to be_truthy
     end
   end
 
   describe 'push' do
     it 'adds a new item to the top of the stack' do
-      @stack.push(1)
-
-      expect(@stack.items).to match_array([1])
+      expect(@stack.push(1)).to match_array([1])
+      expect(@stack.size).to eql(1)
+      expect(@stack.peek).to eql(1)
     end
 
     it 'adds second new item to the top of the stack' do
       @stack.push(1)
-      @stack.push(2)
+      updated_stack = @stack.push(2)
 
-      expect(@stack.items).to match_array([1,2])
+      expect(updated_stack).to match_array([1, 2])
+      expect(@stack.size).to eql(2)
+      expect(@stack.peek).to eql(2)
     end
 
     it 'adds third new item to the top of the stack' do
       @stack.push(1)
       @stack.push(2)
-      @stack.push(3)
+      updated_stack = @stack.push(3)
 
-      expect(@stack.items).to match_array([1,2, 3])
+      expect(updated_stack).to match_array([1, 2, 3])
+      expect(@stack.size).to eql(3)
+      expect(@stack.peek).to eql(3)
+
     end
   end
 
@@ -40,9 +46,9 @@ describe Stack do
       @stack.push(2)
       @stack.push(3)
 
-      @stack.pop
-
-      expect(@stack.items).to match_array([1,2])
+      expect(@stack.pop).to eql(3)
+      expect(@stack.size).to eql(2)
+      expect(@stack.print).to eql('1, 2')
     end
 
     it 'removes another item from the top of the stack' do
@@ -54,7 +60,8 @@ describe Stack do
         @stack.pop
       end
 
-      expect(@stack.items).to match_array([1])
+      expect(@stack.size).to eql(1)
+      expect(@stack.peek).to eql(1)
     end
   end
 
@@ -70,11 +77,11 @@ describe Stack do
     end
   end
 
-  describe 'isEmpty?' do
+  describe 'is_empty?' do
     it 'returns false is the stack is not empty' do
       @stack.push(3)
 
-      expect(@stack.isEmpty?).to be_falsey
+      expect(@stack.is_empty?).to be_falsey
     end
 
     it 'returns true if the stack is empty' do
@@ -82,7 +89,7 @@ describe Stack do
 
       @stack.pop
 
-      expect(@stack.isEmpty?).to be_truthy
+      expect(@stack.is_empty?).to be_truthy
     end
   end
 
@@ -93,9 +100,9 @@ describe Stack do
       @stack.push(5)
       @stack.push(6)
 
-      expect(@stack.isEmpty?).to be_falsey
+      expect(@stack.is_empty?).to be_falsey
       expect(@stack.clear).to match_array([])
-      expect(@stack.isEmpty?).to be_truthy
+      expect(@stack.is_empty?).to be_truthy
     end
   end
 

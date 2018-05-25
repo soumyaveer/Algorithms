@@ -13,7 +13,7 @@ class Stack
   end
 
   # verify if stack is empty
-  def isEmpty?
+  def is_empty?
     @items.empty?
   end
 
