@@ -22,29 +22,30 @@ describe Stack do
 
   describe 'push' do
     it 'adds a new item to the top of the stack' do
-      expect(@stack.push(1)).to match_array([1])
+      @stack.push(1)
+
       expect(@stack.size).to eql(1)
       expect(@stack.peek).to eql(1)
+      expect(@stack.print).to eql('1')
     end
 
     it 'adds second new item to the top of the stack' do
       @stack.push(1)
-      updated_stack = @stack.push(2)
+      @stack.push(2)
 
-      expect(updated_stack).to match_array([1, 2])
       expect(@stack.size).to eql(2)
       expect(@stack.peek).to eql(2)
+      expect(@stack.print).to eql('1, 2')
     end
 
     it 'adds third new item to the top of the stack' do
       @stack.push(1)
       @stack.push(2)
-      updated_stack = @stack.push(3)
+      @stack.push(3)
 
-      expect(updated_stack).to match_array([1, 2, 3])
       expect(@stack.size).to eql(3)
       expect(@stack.peek).to eql(3)
-
+      expect(@stack.print).to eql('1, 2, 3')
     end
   end
 

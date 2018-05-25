@@ -36,6 +36,7 @@ class Stack
   # add an element to the stack
   def push(element)
     @items.push(element)
+    nil
   end
 
   # returns the number of elements in the stack
