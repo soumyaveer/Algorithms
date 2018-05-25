@@ -92,9 +92,9 @@ describe Stack do
       @stack.push(5)
       @stack.push(6)
 
-      expect(@stack.isEmpty).to be_falsey
+      expect(@stack.isEmpty?).to be_falsey
       expect(@stack.clear).to match_array([])
-      expect(@stack.isEmpty).to be_truthy
+      expect(@stack.isEmpty?).to be_truthy
     end
   end
 

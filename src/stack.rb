@@ -22,4 +22,8 @@ class Stack
   def isEmpty?
     @items.empty?
   end
+
+  def clear
+    @items = []
+  end
 end
