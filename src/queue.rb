@@ -13,4 +13,8 @@ class Queue
   def empty?
     @items.empty?
   end
+
+  def front
+    @items[0]
+  end
 end
