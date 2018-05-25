@@ -98,6 +98,16 @@ describe Stack do
     end
   end
 
+  describe 'size' do
+    it 'returns length of the stack' do
+      @stack.push(4)
+      @stack.push(5)
+      @stack.push(6)
+
+      expect(@stack.size).to eql(3)
+    end
+  end
+
   describe 'print' do
     it 'displays the elements of the stack' do
       @stack.push(7)
