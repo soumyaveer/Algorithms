@@ -2,7 +2,7 @@ require_relative "../src/stack"
 
 describe Stack do
   before do
-    @stack = Stack.new()
+    @stack = Stack.new
   end
 
   describe 'initialize' do
@@ -13,18 +13,24 @@ describe Stack do
 
   describe 'push' do
     it 'adds a new item to the top of the stack' do
-      updated_stack = @stack.push(1)
-      expect(updated_stack).to match_array([1])
+      @stack.push(1)
+
+      expect(@stack.items).to match_array([1])
     end
 
     it 'adds second new item to the top of the stack' do
-      updated_stack = @stack.push(2)
-      expect(updated_stack).to match_array([1,2])
+      @stack.push(1)
+      @stack.push(2)
+
+      expect(@stack.items).to match_array([1,2])
     end
 
     it 'adds third new item to the top of the stack' do
-      updated_stack = @stack.push(3)
-      expect(updated_stack).to match_array([1,2, 3])
+      @stack.push(1)
+      @stack.push(2)
+      @stack.push(3)
+      
+      expect(@stack.items).to match_array([1,2, 3])
     end
   end
 

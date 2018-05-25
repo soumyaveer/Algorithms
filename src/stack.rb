@@ -5,4 +5,8 @@ class Stack
   def initialize(items = [])
     @items = items
   end
+
+  def push(element)
+    @items.push(element)
+  end
 end
