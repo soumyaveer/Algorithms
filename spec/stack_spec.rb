@@ -29,21 +29,32 @@ describe Stack do
       @stack.push(1)
       @stack.push(2)
       @stack.push(3)
-      
+
       expect(@stack.items).to match_array([1,2, 3])
     end
   end
 
   describe 'pop' do
     it 'removes the top item from the stack' do
-      updated_stack = @stack.pop
-      expect(updated_stack).to match_array([2,3])
+      @stack.push(1)
+      @stack.push(2)
+      @stack.push(3)
+
+      @stack.pop
+
+      expect(@stack.items).to match_array([1,2])
     end
 
     it 'removes another item from the top of the stack' do
-      updated_stack = @stack.pop
+      @stack.push(1)
+      @stack.push(2)
+      @stack.push(3)
 
-      expect(updated_stack).to match_array([3])
+      2.times do
+        @stack.pop
+      end
+
+      expect(@stack.items).to match_array([1])
     end
   end
 

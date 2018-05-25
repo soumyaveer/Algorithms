@@ -9,4 +9,8 @@ class Stack
   def push(element)
     @items.push(element)
   end
+
+  def pop
+    @items.pop
+  end
 end
