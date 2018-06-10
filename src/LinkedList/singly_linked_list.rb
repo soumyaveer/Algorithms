@@ -26,23 +26,36 @@ module LinkedList
       new_node = LinkedList::Node.new(element, nil)
 
       while current_node
-        p index
-        if index == (position - 1)
+        if index == position - 1
           previous_node = current_node
+          next_node = current_node.pointer
         end
         index += 1
         current_node = current_node.pointer
-        current_node ? next_node = current_node.pointer : next_node = nil
       end
 
-      previous_node.pointer = new_node
       new_node.pointer  = next_node
+      previous_node.pointer = new_node
     end
 
-    # def remove(element)
-    #
-    # end
-    #
+    def remove(element)
+      current_node = @head
+      previous_node = current_node
+      next_node = current_node
+
+      while current_node
+        if current_node.data == element
+          next_node = current_node.pointer
+          current_node.pointer = nil
+          previous_node.pointer = next_node
+        end
+        previous_node = current_node
+        current_node = current_node.pointer
+      end
+
+      previous_node.pointer = next_node
+    end
+
     def index_of(element)
       current_node = @head
       index = 0
@@ -67,13 +80,13 @@ module LinkedList
       while current_node
 
         if position == index
+          next_node = current_node.pointer
           current_node.pointer = nil
           previous_node.pointer = next_node
         end
         index += 1
         previous_node = current_node
         current_node = current_node.pointer
-        current_node ? next_node = current_node.pointer : next_node = nil
       end
     end
 

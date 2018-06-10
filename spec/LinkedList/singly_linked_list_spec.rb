@@ -41,7 +41,16 @@ describe LinkedList::SinglyLinkedList do
 
   describe 'remove' do
     it 'removes an item from the list' do
+      @linked_list.append('B')
+      @linked_list.append('C')
+      @linked_list.append('D')
 
+      expect(@linked_list.size).to eql(4)
+
+      @linked_list.remove('C')
+
+      expect(@linked_list.size).to eql(3)
+      expect(@linked_list.to_s).to eql("A, B, D")
     end
   end
 
