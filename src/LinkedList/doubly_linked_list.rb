@@ -1,16 +1,19 @@
 module LinkedList
-  class SinglyLinkedList
+  class DoublyLinkedList
     attr_accessor :head
 
     def append(element)
       current_node = @head
+      previous_node = nil
 
       while current_node.next?
+        previous_node = current_node.previous_pointer
         current_node = current_node.next_pointer
       end
 
       new_node = LinkedList::Node.new(element, nil)
       current_node.next_pointer = new_node
+      current_node.previous_pointer = previous_node
     end
 
     def empty?
@@ -18,7 +21,7 @@ module LinkedList
     end
 
     def initialize(data = nil)
-      @head = LinkedList::Node.new(data, nil)
+      @head = LinkedList::Node.new(data, nil, nil )
     end
 
     def insert(position, element)
@@ -39,27 +42,14 @@ module LinkedList
       end
 
       new_node.next_pointer  = next_node
+      new_node.previous_pointer = previous_node
       previous_node.next_pointer = new_node
-    end
-
-    def index_of(element)
-      current_node = @head
-      index = 0
-
-      while current_node.next?
-        if element == current_node.data
-          return index
-        end
-        index += 1
-        current_node = current_node.next_pointer
-      end
-      -1
     end
 
     def remove(element)
       current_node = @head
-      previous_node = current_node
-      next_node = current_node
+      previous_node = nil
+      next_node = nil
 
       while current_node
         if current_node.data == element
@@ -72,13 +62,14 @@ module LinkedList
       end
 
       previous_node.next_pointer = next_node
+      next_node.previous_pointer = previous_node
     end
 
     def remove_at(position)
       current_node = @head
       index = 1
-      previous_node = current_node
-      next_node = current_node
+      previous_node = nil
+      next_node = nil
 
       while current_node
 
@@ -86,6 +77,7 @@ module LinkedList
           next_node = current_node.next_pointer
           current_node.next_pointer = nil
           previous_node.next_pointer = next_node
+          next_node.previous_pointer = previous_node
         end
         index += 1
         previous_node = current_node
@@ -116,6 +108,5 @@ module LinkedList
 
       elements.join(", ")
     end
-
   end
 end

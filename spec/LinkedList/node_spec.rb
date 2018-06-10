@@ -2,33 +2,50 @@ require_relative "../../src/LinkedList/node"
 
 describe LinkedList::Node do
   before do
-    @node = LinkedList::Node.new('A', 2)
+    @node = LinkedList::Node.new('A', 2, 0)
   end
 
   describe 'initialize' do
     it 'creates a node with data and position' do
       expect(@node.data).to eql('A')
-      expect(@node.pointer).to eql(2)
+      expect(@node.next_pointer).to eql(2)
     end
   end
 
-  describe 'pointer' do
+  describe 'next_pointer' do
     it 'returns the pointer to the next node' do
       node_1 = LinkedList::Node.new('B', 3)
       LinkedList::Node.new('C', 4)
 
-      expect(node_1.pointer).to eql(3)
+      expect(node_1.next_pointer).to eql(3)
     end
   end
 
-  describe 'pointer=' do
+  describe 'next_pointer=' do
     it 'sets the pointer of the node' do
       node_1 = LinkedList::Node.new('B', 3)
       node_2 = LinkedList::Node.new('C', 4)
 
-      node_1.pointer = node_2
-      expect(node_1.pointer).to eql(node_2)
+      node_1.next_pointer = node_2
+      expect(node_1.next_pointer).to eql(node_2)
 
+    end
+  end
+
+  describe 'previous_pointer' do
+    it 'returns the pointer to the previous node' do
+      expect(@node.data).to eql('A')
+      expect(@node.previous_pointer).to eql(0)
+    end
+  end
+
+  describe 'previous_pointer=' do
+    it 'sets the pointer to the previous node' do
+      node_1 = LinkedList::Node.new('B', 3)
+      node_2 = LinkedList::Node.new('C', 4)
+
+      node_2.previous_pointer = node_1
+      expect(node_2.previous_pointer).to eql(node_1)
     end
   end
 
