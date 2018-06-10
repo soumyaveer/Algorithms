@@ -5,19 +5,27 @@ module LinkedList
     def initialize(data, next_pointer = nil, previous_pointer = nil)
       @data = data
       @next_pointer = next_pointer
+      @previous_pointer = previous_pointer
     end
 
     def next?
       !@next_pointer.nil?
     end
 
-    def next_pointer=(node)
-      @next_pointer = node
+    def next_pointer=(next_node)
+      @next_pointer = next_node
     end
 
     def next_pointer
       @next_pointer
     end
 
+    def previous_pointer=(previous_node)
+      @previous_pointer = previous_node
+    end
+
+    def previous_pointer
+      @previous_pointer
+    end
   end
 end
