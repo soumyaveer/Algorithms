@@ -1,20 +1,15 @@
-require_relative "../src/linked_list"
+require_relative "../../src/LinkedList/singly_linked_list"
+require_relative "../../src/LinkedList/node"
 
-describe LinkedList do
+describe LinkedList::SinglyLinkedList do
   before do
-    @linked_list = LinkedList.new
+    @linked_list = LinkedList::SinglyLinkedList.new('A')
   end
 
   describe 'initialize' do
-    context 'when no data is provided' do
-      it 'creates a new empty list' do
-        expect(@linked_list.size).to eql(0)
-        expect(@linked_list.empty?).to be_truthy
-      end
-    end
-
     context 'when data is provided' do
       it 'creates a new list with provided data' do
+        expect(@linked_list.empty?).to be_falsy
       end
 
     end
@@ -22,7 +17,8 @@ describe LinkedList do
 
   describe 'append' do
     it 'adds a new element to the end of the list' do
-
+      new_node = @linked_list.append('B')
+      expect()
     end
   end
 
@@ -41,7 +37,11 @@ describe LinkedList do
 
   describe 'indexOf' do
     it 'returns the index of an element in the list' do
+        @linked_list.append('B')
+        @linked_list.append('C')
+        @linked_list.append('D')
 
+        expect(@linked_list.indexOf('C')).to eql(2)
     end
   end
 
