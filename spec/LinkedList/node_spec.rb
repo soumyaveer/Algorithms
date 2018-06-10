@@ -12,20 +12,20 @@ describe LinkedList::Node do
     end
   end
 
-  describe 'get_pointer' do
+  describe 'pointer' do
     it 'returns the pointer to the next node' do
       node_1 = LinkedList::Node.new('B', 3)
-      node_2 = LinkedList::Node.new('C', 4)
-      expect(node_1.get_pointer).to eql(3)
+      LinkedList::Node.new('C', 4)
+      expect(node_1.pointer).to eql(3)
     end
   end
 
-  describe 'set_pointer' do
+  describe 'pointer=' do
     it 'sets the pointer of the node' do
       node_1 = LinkedList::Node.new('B', 3)
       node_2 = LinkedList::Node.new('C', 4)
 
-      node_1.set_pointer(node_2)
+      node_1.pointer = node_2
       expect(node_1.pointer).to eql(node_2)
 
     end
@@ -34,7 +34,7 @@ describe LinkedList::Node do
   describe 'next?' do
     it 'returns true if next node is present' do
       node_1 = LinkedList::Node.new('B', 3)
-      node_2 = LinkedList::Node.new('C', 4)
+      LinkedList::Node.new('C', 4)
 
       expect(node_1.next?).to be_truthy
     end

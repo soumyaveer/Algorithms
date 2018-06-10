@@ -10,22 +10,40 @@ module LinkedList
       current_node = @head
 
       while current_node.next?
-        current_node = current_node.get_pointer
+        current_node = current_node.pointer
       end
 
       new_node = LinkedList::Node.new(element, nil)
-      current_node.set_pointer(new_node)
+      current_node.pointer = new_node
     end
 
-    # def insert(position, element)
-    #
-    # end
-    #
+    def insert(position, element)
+      current_node = @head
+      index = 0
+
+      previous_node = current_node
+      next_node = current_node
+      new_node = LinkedList::Node.new(element, nil)
+
+      while current_node
+        p index
+        if index == (position - 1)
+          previous_node = current_node
+        end
+        index += 1
+        next_node = current_node
+        current_node = current_node.pointer
+      end
+
+      previous_node.pointer = new_node
+      new_node.pointer  = next_node
+    end
+
     # def remove(element)
     #
     # end
     #
-    def indexOf(element)
+    def index_of(element)
       current_node = @head
       index = 0
 
@@ -34,7 +52,7 @@ module LinkedList
           return index
         end
         index += 1
-        current_node = current_node.get_pointer
+        current_node = current_node.pointer
       end
 
       -1
@@ -55,19 +73,19 @@ module LinkedList
 
       while current_node.next?
         index += 1
-        current_node = current_node.get_pointer
+        current_node = current_node.pointer
       end
 
       index
     end
 
-    def to_string
+    def to_s
       current_node = @head
       elements = []
 
       while current_node
         elements.push(current_node.data)
-        current_node = current_node.get_pointer
+        current_node = current_node.pointer
       end
 
        elements.join(", ")

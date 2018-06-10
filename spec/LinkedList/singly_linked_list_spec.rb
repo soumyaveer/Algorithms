@@ -17,14 +17,24 @@ describe LinkedList::SinglyLinkedList do
 
   describe 'append' do
     it 'adds a new element to the end of the list' do
-      new_node = @linked_list.append('B')
-      expect()
+      @linked_list.append('B')
+
+      expect(@linked_list.size).to eql(2)
     end
   end
 
   describe 'insert' do
     it 'inserts a new element at specified position' do
+      @linked_list.append('B')
+      @linked_list.append('C')
+      @linked_list.append('E')
 
+      expect(@linked_list.size).to eql(4)
+
+      @linked_list.insert(3, 'D')
+
+      expect(@linked_list.size).to eql(5)
+      expect(@linked_list.to_s).to eql("A, B, C, D, E")
     end
 
   end
@@ -35,13 +45,13 @@ describe LinkedList::SinglyLinkedList do
     end
   end
 
-  describe 'indexOf' do
+  describe 'index_of' do
     it 'returns the index of an element in the list' do
         @linked_list.append('B')
         @linked_list.append('C')
         @linked_list.append('D')
 
-        expect(@linked_list.indexOf('C')).to eql(2)
+        expect(@linked_list.index_of('C')).to eql(2)
     end
   end
 
@@ -72,13 +82,13 @@ describe LinkedList::SinglyLinkedList do
     end
   end
 
-  describe 'to_string' do
+  describe 'to_s' do
     it 'returns only the element values' do
       @linked_list.append('B')
       @linked_list.append('C')
       @linked_list.append('D')
 
-      expect(@linked_list.to_string).to eql("A, B, C, D")
+      expect(@linked_list.to_s).to eql("A, B, C, D")
     end
   end
 end

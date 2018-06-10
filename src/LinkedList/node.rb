@@ -1,17 +1,17 @@
 module LinkedList
   class Node
-    attr_accessor :data, :pointer
+    attr_accessor :data
 
     def initialize(data, pointer = nil)
       @data = data
       @pointer = pointer
     end
 
-    def set_pointer(node)
+    def pointer=(node)
       @pointer = node
     end
 
-    def get_pointer
+    def pointer
       @pointer
     end
 
