@@ -6,11 +6,11 @@ module LinkedList
       current_node = @head
 
       while current_node.next?
-        current_node = current_node.pointer
+        current_node = current_node.next_pointer
       end
 
       new_node = LinkedList::Node.new(element, nil)
-      current_node.pointer = new_node
+      current_node.next_pointer = new_node
     end
 
     def empty?
@@ -32,14 +32,14 @@ module LinkedList
       while current_node
         if index == position - 1
           previous_node = current_node
-          next_node = current_node.pointer
+          next_node = current_node.next_pointer
         end
         index += 1
-        current_node = current_node.pointer
+        current_node = current_node.next_pointer
       end
 
-      new_node.pointer  = next_node
-      previous_node.pointer = new_node
+      new_node.next_pointer  = next_node
+      previous_node.next_pointer = new_node
     end
 
     def index_of(element)
@@ -51,7 +51,7 @@ module LinkedList
           return index
         end
         index += 1
-        current_node = current_node.pointer
+        current_node = current_node.next_pointer
       end
       -1
     end
@@ -63,15 +63,15 @@ module LinkedList
 
       while current_node
         if current_node.data == element
-          next_node = current_node.pointer
-          current_node.pointer = nil
-          previous_node.pointer = next_node
+          next_node = current_node.next_pointer
+          current_node.next_pointer = nil
+          previous_node.next_pointer = next_node
         end
         previous_node = current_node
-        current_node = current_node.pointer
+        current_node = current_node.next_pointer
       end
 
-      previous_node.pointer = next_node
+      previous_node.next_pointer = next_node
     end
 
     def remove_at(position)
@@ -83,13 +83,13 @@ module LinkedList
       while current_node
 
         if position == index
-          next_node = current_node.pointer
-          current_node.pointer = nil
-          previous_node.pointer = next_node
+          next_node = current_node.next_pointer
+          current_node.next_pointer = nil
+          previous_node.next_pointer = next_node
         end
         index += 1
         previous_node = current_node
-        current_node = current_node.pointer
+        current_node = current_node.next_pointer
       end
     end
 
@@ -99,7 +99,7 @@ module LinkedList
 
       while current_node.next?
         index += 1
-        current_node = current_node.pointer
+        current_node = current_node.next_pointer
       end
 
       index
@@ -111,7 +111,7 @@ module LinkedList
 
       while current_node
         elements.push(current_node.data)
-        current_node = current_node.pointer
+        current_node = current_node.next_pointer
       end
 
       elements.join(", ")

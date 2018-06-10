@@ -8,7 +8,7 @@ describe LinkedList::Node do
   describe 'initialize' do
     it 'creates a node with data and position' do
       expect(@node.data).to eql('A')
-      expect(@node.pointer).to eql(2)
+      expect(@node.next_pointer).to eql(2)
     end
   end
 
@@ -17,7 +17,7 @@ describe LinkedList::Node do
       node_1 = LinkedList::Node.new('B', 3)
       LinkedList::Node.new('C', 4)
 
-      expect(node_1.pointer).to eql(3)
+      expect(node_1.next_pointer).to eql(3)
     end
   end
 
@@ -26,8 +26,8 @@ describe LinkedList::Node do
       node_1 = LinkedList::Node.new('B', 3)
       node_2 = LinkedList::Node.new('C', 4)
 
-      node_1.pointer = node_2
-      expect(node_1.pointer).to eql(node_2)
+      node_1.next_pointer = node_2
+      expect(node_1.next_pointer).to eql(node_2)
 
     end
   end
