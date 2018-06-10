@@ -2,7 +2,7 @@ module LinkedList
   class SinglyLinkedList
     attr_accessor :head
 
-    def initialize(data)
+    def initialize(data = nil)
       @head = LinkedList::Node.new(data, nil)
     end
 
@@ -39,15 +39,16 @@ module LinkedList
 
       -1
     end
+
     #
     # def removeAt(position)
     #
     # end
-    #
-    # def empty?
-    #
-    # end
-    #
+
+    def empty?
+      @head.data.nil?
+    end
+
     def size
       current_node = @head
       index = 1

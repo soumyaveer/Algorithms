@@ -53,11 +53,12 @@ describe LinkedList::SinglyLinkedList do
 
   describe 'empty?' do
     it 'returns true if the list does not contain any element' do
-
+      linked_list = LinkedList::SinglyLinkedList.new
+      expect(linked_list.empty?).to be_truthy
     end
 
     it 'returns false if the list contains elements' do
-
+      expect(@linked_list.empty?).to be_falsey
     end
   end
 
