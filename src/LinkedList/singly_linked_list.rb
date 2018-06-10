@@ -61,8 +61,17 @@ module LinkedList
       index
     end
 
-    # def toString
-    #
-    # end
+    def toString
+      current_node = @head
+      elements = []
+
+      while current_node
+        elements.push(current_node.data)
+        current_node = current_node.get_pointer
+      end
+
+       elements.join(", ")
+    end
+
   end
 end
