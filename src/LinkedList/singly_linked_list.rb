@@ -31,8 +31,8 @@ module LinkedList
           previous_node = current_node
         end
         index += 1
-        next_node = current_node
         current_node = current_node.pointer
+        current_node ? next_node = current_node.pointer : next_node = nil
       end
 
       previous_node.pointer = new_node
@@ -58,10 +58,24 @@ module LinkedList
       -1
     end
 
-    #
-    # def removeAt(position)
-    #
-    # end
+    def remove_at(position)
+      current_node = @head
+      index = 1
+      previous_node = current_node
+      next_node = current_node
+
+      while current_node
+
+        if position == index
+          current_node.pointer = nil
+          previous_node.pointer = next_node
+        end
+        index += 1
+        previous_node = current_node
+        current_node = current_node.pointer
+        current_node ? next_node = current_node.pointer : next_node = nil
+      end
+    end
 
     def empty?
       @head.data.nil?
