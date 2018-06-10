@@ -11,7 +11,6 @@ describe LinkedList::SinglyLinkedList do
       it 'creates a new list with provided data' do
         expect(@linked_list.empty?).to be_falsy
       end
-
     end
   end
 
@@ -36,7 +35,6 @@ describe LinkedList::SinglyLinkedList do
       expect(@linked_list.size).to eql(5)
       expect(@linked_list.to_s).to eql("A, B, C, D, E")
     end
-
   end
 
   describe 'remove' do
@@ -79,6 +77,7 @@ describe LinkedList::SinglyLinkedList do
   describe 'empty?' do
     it 'returns true if the list does not contain any element' do
       linked_list = LinkedList::SinglyLinkedList.new
+
       expect(linked_list.empty?).to be_truthy
     end
 

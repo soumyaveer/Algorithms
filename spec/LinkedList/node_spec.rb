@@ -16,6 +16,7 @@ describe LinkedList::Node do
     it 'returns the pointer to the next node' do
       node_1 = LinkedList::Node.new('B', 3)
       LinkedList::Node.new('C', 4)
+
       expect(node_1.pointer).to eql(3)
     end
   end

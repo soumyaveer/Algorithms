@@ -7,16 +7,16 @@ module LinkedList
       @pointer = pointer
     end
 
+    def next?
+      !@pointer.nil?
+    end
+
     def pointer=(node)
       @pointer = node
     end
 
     def pointer
       @pointer
-    end
-
-    def next?
-      !@pointer.nil?
     end
   end
 end

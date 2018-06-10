@@ -2,10 +2,6 @@ module LinkedList
   class SinglyLinkedList
     attr_accessor :head
 
-    def initialize(data = nil)
-      @head = LinkedList::Node.new(data, nil)
-    end
-
     def append(element)
       current_node = @head
 
@@ -15,6 +11,14 @@ module LinkedList
 
       new_node = LinkedList::Node.new(element, nil)
       current_node.pointer = new_node
+    end
+
+    def empty?
+      @head.data.nil?
+    end
+
+    def initialize(data = nil)
+      @head = LinkedList::Node.new(data, nil)
     end
 
     def insert(position, element)
@@ -38,6 +42,20 @@ module LinkedList
       previous_node.pointer = new_node
     end
 
+    def index_of(element)
+      current_node = @head
+      index = 0
+
+      while current_node.next?
+        if element == current_node.data
+          return index
+        end
+        index += 1
+        current_node = current_node.pointer
+      end
+      -1
+    end
+
     def remove(element)
       current_node = @head
       previous_node = current_node
@@ -54,21 +72,6 @@ module LinkedList
       end
 
       previous_node.pointer = next_node
-    end
-
-    def index_of(element)
-      current_node = @head
-      index = 0
-
-      while current_node.next?
-        if element == current_node.data
-          return index
-        end
-        index += 1
-        current_node = current_node.pointer
-      end
-
-      -1
     end
 
     def remove_at(position)
@@ -88,10 +91,6 @@ module LinkedList
         previous_node = current_node
         current_node = current_node.pointer
       end
-    end
-
-    def empty?
-      @head.data.nil?
     end
 
     def size
@@ -115,7 +114,7 @@ module LinkedList
         current_node = current_node.pointer
       end
 
-       elements.join(", ")
+      elements.join(", ")
     end
 
   end
