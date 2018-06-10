@@ -2,10 +2,6 @@ module LinkedList
   class DoublyLinkedList
     attr_accessor :head
 
-    def initialize(data = nil)
-      @head = LinkedList::Node.new(data, nil, nil )
-    end
-
     def append(element)
       current_node = @head
       previous_node = nil
@@ -24,28 +20,8 @@ module LinkedList
       @head.data.nil?
     end
 
-    def size
-      current_node = @head
-      index = 1
-
-      while current_node.next?
-        index += 1
-        current_node = current_node.next_pointer
-      end
-
-      index
-    end
-
-    def to_s
-      current_node = @head
-      elements = []
-
-      while current_node
-        elements.push(current_node.data)
-        current_node = current_node.next_pointer
-      end
-
-      elements.join(", ")
+    def initialize(data = nil)
+      @head = LinkedList::Node.new(data, nil, nil )
     end
 
     def insert(position, element)
@@ -107,6 +83,30 @@ module LinkedList
         previous_node = current_node
         current_node = current_node.next_pointer
       end
+    end
+
+    def size
+      current_node = @head
+      index = 1
+
+      while current_node.next?
+        index += 1
+        current_node = current_node.next_pointer
+      end
+
+      index
+    end
+
+    def to_s
+      current_node = @head
+      elements = []
+
+      while current_node
+        elements.push(current_node.data)
+        current_node = current_node.next_pointer
+      end
+
+      elements.join(", ")
     end
   end
 end
