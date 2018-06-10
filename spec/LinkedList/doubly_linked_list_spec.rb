@@ -31,7 +31,28 @@ describe LinkedList::DoublyLinkedList do
 
   describe 'remove_at' do
     it 'removes an item from a specified position in the list' do
+      @linked_list.append('B')
+      @linked_list.append('C')
+      @linked_list.append('D')
 
+      @linked_list.remove_at(3)
+      expect(@linked_list.size).to eql(3)
+      expect(@linked_list.to_s).to eql("A, B, D")
+    end
+  end
+
+  describe 'remove' do
+    it 'removes an item from the list' do
+      @linked_list.append('B')
+      @linked_list.append('C')
+      @linked_list.append('D')
+
+      expect(@linked_list.size).to eql(4)
+
+      @linked_list.remove('C')
+
+      expect(@linked_list.size).to eql(3)
+      expect(@linked_list.to_s).to eql("A, B, D")
     end
   end
 end
