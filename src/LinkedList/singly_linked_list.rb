@@ -47,11 +47,19 @@ module LinkedList
     # def empty?
     #
     # end
-    # 
-    # def size
     #
-    # end
-    #
+    def size
+      current_node = @head
+      index = 1
+
+      while current_node.next?
+        index += 1
+        current_node = current_node.get_pointer
+      end
+
+      index
+    end
+
     # def toString
     #
     # end

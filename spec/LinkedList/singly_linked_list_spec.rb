@@ -63,7 +63,11 @@ describe LinkedList::SinglyLinkedList do
 
   describe 'size' do
     it 'returns the number of elements in the list' do
+      @linked_list.append('B')
+      @linked_list.append('C')
+      @linked_list.append('D')
 
+      expect(@linked_list.size).to eql(4)
     end
   end
 
