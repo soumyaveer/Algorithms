@@ -61,7 +61,7 @@ module LinkedList
       index
     end
 
-    def toString
+    def to_string
       current_node = @head
       elements = []
 

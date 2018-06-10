@@ -72,13 +72,13 @@ describe LinkedList::SinglyLinkedList do
     end
   end
 
-  describe 'toString' do
+  describe 'to_string' do
     it 'returns only the element values' do
       @linked_list.append('B')
       @linked_list.append('C')
       @linked_list.append('D')
 
-      expect(@linked_list.toString).to eql("A, B, C, D")
+      expect(@linked_list.to_string).to eql("A, B, C, D")
     end
   end
 end
