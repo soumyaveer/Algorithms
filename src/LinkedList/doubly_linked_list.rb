@@ -20,6 +20,10 @@ module LinkedList
       current_node.previous_pointer = previous_node
     end
 
+    def empty?
+      @head.data.nil?
+    end
+
     def size
       current_node = @head
       index = 1
