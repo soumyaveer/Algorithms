@@ -1,17 +1,22 @@
 module LinkedList
-  class CircularSinglyLinkedList
+  class CircularDoublyLinkedList
     attr_accessor :head
 
     def append(element)
       current_node = @head
+      previous_node = nil
+      next_node = nil
 
       while current_node.next? && current_node.next_pointer != @head
+        previous_node = current_node.previous_pointer
         current_node = current_node.next_pointer
+        next_node = current_node.next_pointer
       end
 
-      new_node = LinkedList::Node.new(element, nil)
-      new_node.next_pointer = @head
+      new_node = LinkedList::Node.new(element, @head)
+      new_node.previous_pointer = next_node
       current_node.next_pointer = new_node
+      current_node.previous_pointer = previous_node
     end
 
     def empty?
@@ -19,7 +24,7 @@ module LinkedList
     end
 
     def initialize(data = nil)
-      @head = LinkedList::Node.new(data, nil)
+      @head = LinkedList::Node.new(data, nil, nil)
     end
 
     def insert(element, position)
@@ -28,10 +33,10 @@ module LinkedList
       previous_node = nil
       next_node = nil
 
-      while current_node.next_pointer
+      while current_node.next? && current_node.next_pointer != @head
         if index == position - 1
           previous_node = current_node
-          next_node = current_node.next_pointer
+          next_node  = current_node.next_pointer
           break
         end
 
@@ -39,8 +44,9 @@ module LinkedList
         current_node = current_node.next_pointer
       end
 
-      new_node = LinkedList::Node.new(element, next_node)
+      new_node = LinkedList::Node.new(element, next_node, previous_node)
       previous_node.next_pointer = new_node
+      next_node.previous_pointer = new_node
     end
 
     def remove(element)
@@ -52,6 +58,7 @@ module LinkedList
         if current_node.data == element
           next_node = current_node.next_pointer
           current_node.next_pointer = nil
+          current_node.previous_pointer = nil
           previous_node.next_pointer = next_node
         end
 
@@ -59,19 +66,21 @@ module LinkedList
         current_node = current_node.next_pointer
       end
 
+      next_node.previous_pointer = previous_node
       previous_node.next_pointer = next_node
     end
 
     def remove_at(position)
       current_node = @head
-      index = 1
-      previous_node = current_node
-      next_node = current_node
+      previous_node = nil
+      next_node = nil
+      index = 0
 
       while current_node
-        if position == index
+        if index == position - 1
           next_node = current_node.next_pointer
           current_node.next_pointer = nil
+          current_node.previous_pointer = nil
           previous_node.next_pointer = next_node
         end
 
@@ -79,6 +88,9 @@ module LinkedList
         previous_node = current_node
         current_node = current_node.next_pointer
       end
+
+      next_node.previous_pointer = previous_node
+      previous_node.next_pointer = next_node
     end
 
     def size
@@ -98,7 +110,7 @@ module LinkedList
       elements = []
 
       if !current_node.nil?
-        elements.push(current_node.data)
+        elements << current_node.data
       end
 
       while current_node.next? && current_node.next_pointer != @head
@@ -110,4 +122,3 @@ module LinkedList
     end
   end
 end
-
