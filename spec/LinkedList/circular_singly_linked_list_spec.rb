@@ -50,7 +50,7 @@ describe LinkedList::CircularSinglyLinkedList do
       expect(@linked_list.size).to eql(4)
 
       @linked_list.insert('D', 3)
-      
+
       expect(@linked_list.size).to eql(5)
       expect(@linked_list.to_s).to eql("A, B, C, D, E")
     end

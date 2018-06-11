@@ -38,7 +38,9 @@ module LinkedList
       current_node = @head
       elements = []
 
-      current_node.nil? ? elements : elements << current_node.data
+      if !current_node.nil?
+        elements.push(current_node.data)
+      end
 
       while current_node.next? && current_node.next_pointer != @head
         current_node = current_node.next_pointer
