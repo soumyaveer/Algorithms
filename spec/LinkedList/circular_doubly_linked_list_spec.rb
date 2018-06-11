@@ -20,7 +20,7 @@ describe LinkedList::CircularDoublyLinkedList do
       expect(linked_list.empty?).to be_truthy
     end
 
-    it 'returns false when th elist contains elements' do
+    it 'returns false when the list contains elements' do
       expect(@linked_list.empty?).to be_falsy
     end
   end
@@ -84,7 +84,7 @@ describe LinkedList::CircularDoublyLinkedList do
   end
 
   describe 'remove_at' do
-    it 'removes an element from the list from a given position' do
+    it 'removes an element from a given position in the list' do
       @linked_list.append('B')
       @linked_list.append('C')
       @linked_list.append('D')
