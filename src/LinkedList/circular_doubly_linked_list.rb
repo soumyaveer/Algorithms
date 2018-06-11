@@ -36,5 +36,21 @@ module LinkedList
         current_node.next_pointer = new_node
         current_node.previous_pointer = previous_node
     end
+
+    def to_s
+      current_node = @head
+      elements = []
+
+      if !current_node.nil?
+        elements << current_node.data
+      end
+
+      while current_node.next? && current_node.next_pointer != @head
+        current_node = current_node.next_pointer
+        elements.push(current_node.data)
+      end
+
+      elements.join(", ")
+    end
   end
 end
