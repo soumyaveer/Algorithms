@@ -16,6 +16,7 @@ describe LinkedList::CircularDoublyLinkedList do
   describe 'empty?' do
     it 'returns true when the list does not contain elements' do
       linked_list = LinkedList::CircularDoublyLinkedList.new
+
       expect(linked_list.empty?).to be_truthy
     end
 
@@ -61,7 +62,7 @@ describe LinkedList::CircularDoublyLinkedList do
       expect(@linked_list.size).to eql(4)
 
       @linked_list.insert('D', 3)
-      p @linked_list.inspect
+
       expect(@linked_list.size).to eql(5)
       expect(@linked_list.to_s).to eql("A, B, C, D, E")
     end
