@@ -52,5 +52,27 @@ module LinkedList
 
       elements.join(", ")
     end
+
+    def insert(element, position)
+      current_node = @head
+      index = 0
+      previous_node = nil
+      next_node = nil
+
+      while current_node.next? && current_node.next_pointer != @head
+        if index == position - 1
+          previous_node = current_node
+          next_node  = current_node.next_pointer
+          break
+        end
+
+        index += 1
+        current_node = current_node.next_pointer
+      end
+
+      new_node = LinkedList::Node.new(element, next_node, previous_node)
+      previous_node.next_pointer = new_node
+      next_node.previous_pointer = new_node
+    end
   end
 end

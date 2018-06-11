@@ -61,9 +61,9 @@ describe LinkedList::CircularDoublyLinkedList do
       expect(@linked_list.size).to eql(4)
 
       @linked_list.insert('D', 3)
-
+      p @linked_list.inspect
       expect(@linked_list.size).to eql(5)
-      expect(@linked_list.ot_s).to eql("A, B, C, D, E")
+      expect(@linked_list.to_s).to eql("A, B, C, D, E")
     end
   end
 
@@ -78,7 +78,7 @@ describe LinkedList::CircularDoublyLinkedList do
       @linked_list.remove('C')
 
       expect(@linked_list.size).to eql(3)
-      expect(@linked_list.ot_s).to eql("A, B, D")
+      expect(@linked_list.to_s).to eql("A, B, D")
     end
   end
 
@@ -91,7 +91,7 @@ describe LinkedList::CircularDoublyLinkedList do
       expect(@linked_list.size).to eql(4)
 
       @linked_list.remove_at(3)
-      expect(@linked_list.ot_s).to eql("A, B, D")
+      expect(@linked_list.to_s).to eql("A, B, D")
     end
   end
 end
