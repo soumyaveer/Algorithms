@@ -17,7 +17,6 @@ describe LinkedList::CircularSinglyLinkedList do
     it 'returns number of elements in the linked list' do
       @linked_list.append('B')
 
-      p @linked_list.inspect
       expect(@linked_list.size).to eql(2)
     end
   end
@@ -33,14 +32,14 @@ describe LinkedList::CircularSinglyLinkedList do
     end
   end
 
-  # describe 'to_s' do
-  #   it 'returns the elements in the linked list' do
-  #     @linked_list.append('B')
-  #     # @linked_list.append('C')
-  #
-  #     expect(@linked_list.to_s).to eql("A, B")
-  #   end
-  # end
+  describe 'to_s' do
+    it 'returns the elements in the linked list' do
+      @linked_list.append('B')
+      @linked_list.append('C')
+
+      expect(@linked_list.to_s).to eql("A, B, C")
+    end
+  end
 
   describe 'insert' do
     it 'inserts an element in the linked list at the given position' do
@@ -51,9 +50,9 @@ describe LinkedList::CircularSinglyLinkedList do
       expect(@linked_list.size).to eql(4)
 
       @linked_list.insert('D', 3)
-       p @linked_list.inspect
+      
       expect(@linked_list.size).to eql(5)
-      # expect(@linked_list.to_s).to eql("A, B")
+      expect(@linked_list.to_s).to eql("A, B, C, D, E")
     end
   end
 
@@ -63,7 +62,7 @@ describe LinkedList::CircularSinglyLinkedList do
       @linked_list.append('C')
 
       expect(@linked_list.size).to eql(3)
-      # expect(@linked_list.to_s).to eql("A, B, C")
+      expect(@linked_list.to_s).to eql("A, B, C")
     end
   end
 

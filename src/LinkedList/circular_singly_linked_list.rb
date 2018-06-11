@@ -33,19 +33,20 @@ module LinkedList
 
       index
     end
-    #
-    # def to_s
-    #   current_node = @head
-    #   elements = []
-    #
-    #   while current_node.next?
-    #     elements.push(current_node.data)
-    #     p elements
-    #     current_node = current_node.next_pointer
-    #   end
-    #
-    #   elements.join(", ")
-    # end
+
+    def to_s
+      current_node = @head
+      elements = []
+
+      current_node.nil? ? elements : elements << current_node.data
+
+      while current_node.next? && current_node.next_pointer != @head
+        current_node = current_node.next_pointer
+        elements.push(current_node.data)
+      end
+
+      elements.join(", ")
+    end
 
     def insert(element, position)
       current_node = @head
