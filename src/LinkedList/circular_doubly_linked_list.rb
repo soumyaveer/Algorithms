@@ -97,5 +97,27 @@ module LinkedList
       next_node.previous_pointer = previous_node
       previous_node.next_pointer = next_node
     end
+
+    def remove_at(position)
+      current_node = @head
+      previous_node = nil
+      next_node = nil
+      index = 0
+
+      while current_node
+        if index == position - 1
+          next_node = current_node.next_pointer
+          current_node.next_pointer = nil
+          current_node.previous_pointer = nil
+          previous_node.next_pointer = next_node
+        end
+        index += 1
+        previous_node = current_node
+        current_node = current_node.next_pointer
+      end
+
+      next_node.previous_pointer = previous_node
+      previous_node.next_pointer = next_node
+    end
   end
 end
