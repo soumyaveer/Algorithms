@@ -66,4 +66,32 @@ describe LinkedList::CircularSinglyLinkedList do
       # expect(@linked_list.to_s).to eql("A, B, C")
     end
   end
+
+  describe 'remove' do
+    it 'removes the element from the list' do
+      @linked_list.append('B')
+      @linked_list.append('C')
+      @linked_list.append('D')
+
+      expect(@linked_list.size).to eql(4)
+
+      @linked_list.remove('C')
+
+      expect(@linked_list.size).to eql(3)
+    end
+  end
+
+  describe 'remove_at' do
+    it 'removes the element from the list from a specified position' do
+      @linked_list.append('B')
+      @linked_list.append('C')
+      @linked_list.append('D')
+
+      expect(@linked_list.size).to eql(4)
+
+      @linked_list.remove_at(2)
+
+      expect(@linked_list.size).to eql(3)
+    end
+  end
 end
