@@ -2,57 +2,29 @@ module LinkedList
   class CircularDoublyLinkedList
     attr_accessor :head
 
-    def initialize(data = nil)
-      @head = LinkedList::Node.new(data, nil, nil)
-    end
-
-    def empty?
-      @head.data.nil?
-    end
-
-    def size
-      current_node = @head
-      index = 1
-
-      while current_node.next? && current_node.next_pointer != @head
-
-        index += 1
-        current_node = current_node.next_pointer
-      end
-
-      index
-    end
-
     def append(element)
       current_node = @head
       previous_node = nil
       next_node = nil
+      
       while current_node.next? && current_node.next_pointer != @head
         previous_node = current_node.previous_pointer
         current_node = current_node.next_pointer
         next_node = current_node.next_pointer
       end
 
-        new_node = LinkedList::Node.new(element, @head)
-        new_node.previous_pointer = next_node
-        current_node.next_pointer = new_node
-        current_node.previous_pointer = previous_node
+      new_node = LinkedList::Node.new(element, @head)
+      new_node.previous_pointer = next_node
+      current_node.next_pointer = new_node
+      current_node.previous_pointer = previous_node
     end
 
-    def to_s
-      current_node = @head
-      elements = []
+    def empty?
+      @head.data.nil?
+    end
 
-      if !current_node.nil?
-        elements << current_node.data
-      end
-
-      while current_node.next? && current_node.next_pointer != @head
-        current_node = current_node.next_pointer
-        elements.push(current_node.data)
-      end
-
-      elements.join(", ")
+    def initialize(data = nil)
+      @head = LinkedList::Node.new(data, nil, nil)
     end
 
     def insert(element, position)
@@ -88,8 +60,8 @@ module LinkedList
           current_node.next_pointer = nil
           current_node.previous_pointer = nil
           previous_node.next_pointer = next_node
-
         end
+
         previous_node = current_node
         current_node = current_node.next_pointer
       end
@@ -111,6 +83,7 @@ module LinkedList
           current_node.previous_pointer = nil
           previous_node.next_pointer = next_node
         end
+
         index += 1
         previous_node = current_node
         current_node = current_node.next_pointer
@@ -118,6 +91,34 @@ module LinkedList
 
       next_node.previous_pointer = previous_node
       previous_node.next_pointer = next_node
+    end
+
+    def size
+      current_node = @head
+      index = 1
+
+      while current_node.next? && current_node.next_pointer != @head
+        index += 1
+        current_node = current_node.next_pointer
+      end
+
+      index
+    end
+
+    def to_s
+      current_node = @head
+      elements = []
+
+      if !current_node.nil?
+        elements << current_node.data
+      end
+
+      while current_node.next? && current_node.next_pointer != @head
+        current_node = current_node.next_pointer
+        elements.push(current_node.data)
+      end
+
+      elements.join(", ")
     end
   end
 end
