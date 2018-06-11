@@ -48,7 +48,7 @@ describe LinkedList::CircularDoublyLinkedList do
       @linked_list.append('C')
 
       expect(@linked_list.size).to eql(3)
-      expect(@linked_list.ot_s).to eql("A, B, C")
+      expect(@linked_list.to_s).to eql("A, B, C")
     end
   end
 

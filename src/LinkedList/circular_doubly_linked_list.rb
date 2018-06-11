@@ -22,5 +22,19 @@ module LinkedList
 
       index
     end
+
+    def append(element)
+      current_node = @head
+      previous_node = nil
+
+      while current_node.next? && current_node.next_pointer != @head
+        previous_node = current_node.previous_pointer
+        current_node = current_node.next_pointer
+      end
+
+        new_node = LinkedList::Node.new(element, @head)
+        current_node.next_pointer = new_node
+        current_node.previous_pointer = previous_node
+    end
   end
 end
