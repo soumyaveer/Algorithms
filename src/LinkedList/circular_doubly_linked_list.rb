@@ -26,13 +26,15 @@ module LinkedList
     def append(element)
       current_node = @head
       previous_node = nil
-
+      next_node = nil
       while current_node.next? && current_node.next_pointer != @head
         previous_node = current_node.previous_pointer
         current_node = current_node.next_pointer
+        next_node = current_node.next_pointer
       end
 
         new_node = LinkedList::Node.new(element, @head)
+        new_node.previous_pointer = next_node
         current_node.next_pointer = new_node
         current_node.previous_pointer = previous_node
     end
@@ -73,6 +75,27 @@ module LinkedList
       new_node = LinkedList::Node.new(element, next_node, previous_node)
       previous_node.next_pointer = new_node
       next_node.previous_pointer = new_node
+    end
+
+    def remove(element)
+      current_node = @head
+      previous_node = nil
+      next_node = nil
+
+      while current_node
+        if current_node.data == element
+          next_node = current_node.next_pointer
+          current_node.next_pointer = nil
+          current_node.previous_pointer = nil
+          previous_node.next_pointer = next_node
+
+        end
+        previous_node = current_node
+        current_node = current_node.next_pointer
+      end
+
+      next_node.previous_pointer = previous_node
+      previous_node.next_pointer = next_node
     end
   end
 end
