@@ -6,7 +6,7 @@ module LinkedList
       current_node = @head
       previous_node = nil
       next_node = nil
-      
+
       while current_node.next? && current_node.next_pointer != @head
         previous_node = current_node.previous_pointer
         current_node = current_node.next_pointer
