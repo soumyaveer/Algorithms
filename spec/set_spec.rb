@@ -16,9 +16,10 @@ describe Set do
       @set.add(1)
       @set.add(2)
 
+      p @set.items.inspect
       expect(@set.size).to eql(2)
-      expect(@set.has(1)).to be_truthy
-      expect(@set.has(2)).to be_truthy
+      expect(@set.has?(1)).to be_truthy
+      expect(@set.has?(2)).to be_truthy
 
       expect(@set.values).to match_array([2, 3])
     end
@@ -38,18 +39,18 @@ describe Set do
     end
   end
 
-  describe 'has' do
+  describe 'has?' do
     it 'returns true if the value exists in the set' do
       @set.add(1)
       @set.add(2)
 
       expect(@set.size).to eql(2)
-      expect(@set.has(2)).to be_truthy
+      expect(@set.has?(2)).to be_truthy
     end
 
     it 'returns false if the value does not exist in the set' do
       expect(@set.size).to eql(0)
-      expect(@set.has(2)).to be_falsey
+      expect(@set.has?(2)).to be_falsey
     end
   end
 
