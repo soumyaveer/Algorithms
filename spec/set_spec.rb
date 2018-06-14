@@ -16,12 +16,10 @@ describe Set do
       @set.add(1)
       @set.add(2)
 
-      p @set.items.inspect
       expect(@set.size).to eql(2)
       expect(@set.has?(1)).to be_truthy
       expect(@set.has?(2)).to be_truthy
-
-      expect(@set.values).to match_array([2, 3])
+      expect(@set.values).to match_array([1, 2])
     end
   end
 

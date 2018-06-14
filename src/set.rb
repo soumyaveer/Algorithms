@@ -20,4 +20,16 @@ class Set
     end
      false
   end
+
+  def clear
+    @items = {}
+  end
+
+  def delete(delete_value)
+    @items.delete_if {|key| key == delete_value}
+  end
+
+  def values
+    @items.values
+  end
 end
