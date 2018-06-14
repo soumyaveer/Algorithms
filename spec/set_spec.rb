@@ -83,4 +83,19 @@ describe Set do
       expect(@set.values).to match_array([1, 2])
     end
   end
+
+  describe 'Set Operations' do
+    describe 'Union' do
+      it 'returns the union of two sets' do
+        @set.add(1)
+        @set.add(2)
+        @set.add(3)
+
+        p @set.items
+        other_set = Set.new({ 4 => 4, 5 => 5, 6 => 6})
+
+        expect(@set.union(other_set)).to eql({1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6})
+      end
+    end
+  end
 end

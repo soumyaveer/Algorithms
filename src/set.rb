@@ -32,4 +32,18 @@ class Set
   def values
     @items.values
   end
+
+  def union(other_set)
+    union_set = Set.new
+
+    @items.each_value do |value|
+      union_set.add(value)
+    end
+
+    other_set.items.each_value do |value|
+      union_set.add(value)
+    end
+
+    union_set.items
+  end
 end
