@@ -46,4 +46,14 @@ class Set
 
     union_set.items
   end
+
+  def intersect(other_set)
+    intersection_set = Set.new
+
+    @items.each_value do |value|
+      other_set.items.include?(value) ? intersection_set.add(value) : intersection_set
+    end
+
+    intersection_set.items
+  end
 end

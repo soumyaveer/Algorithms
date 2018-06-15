@@ -85,16 +85,37 @@ describe Set do
   end
 
   describe 'Set Operations' do
-    describe 'Union' do
+    describe 'union' do
       it 'returns the union of two sets' do
         @set.add(1)
         @set.add(2)
         @set.add(3)
 
-        p @set.items
         other_set = Set.new({ 4 => 4, 5 => 5, 6 => 6})
 
         expect(@set.union(other_set)).to eql({1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6})
+      end
+    end
+
+    describe 'intersect' do
+      it 'returns the intersection of two sets' do
+        @set.add(1)
+        @set.add(2)
+        @set.add(3)
+
+        other_set = Set.new({ 4 => 4, 2 => 2, 1 => 1})
+
+        expect(@set.intersect(other_set)).to eql({1 => 1 , 2 => 2})
+      end
+
+      it 'returns empty set if there are no common values in two sets' do
+        @set.add(1)
+        @set.add(2)
+        @set.add(3)
+
+        other_set = Set.new({ 4 => 4, 5 => 5, 6 => 6})
+
+        expect(@set.intersect(other_set)).to eql({})
       end
     end
   end
