@@ -2,7 +2,7 @@ require_relative "../src/dictionaries"
 
 describe Dictionaries do
   before do
-    @dictionary = Dictionary.new
+    @dictionary = Dictionaries.new
   end
 
   describe 'initialize' do
