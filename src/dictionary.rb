@@ -32,4 +32,16 @@ class Dictionary
   def clear
     @items = {}
   end
+
+  def keys
+    item_keys = []
+    @items.each_key {|key| item_keys.push(key)}
+    item_keys
+  end
+
+  def values
+    item_values = []
+    @items.each_value {|value| item_values.push(value)}
+    item_values
+  end
 end

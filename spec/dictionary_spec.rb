@@ -19,13 +19,15 @@ describe Dictionary do
       @dictionary.set("Frodo", "frodo_baggins@shire.com")
 
       expect(@dictionary.size).to eql(4)
-      expect(@dictionary.items).to eql(
-                                     { "Gandalf"=>"gandalf_the_grey@wizard.com",
-                                       "Legolas"=>"legolas@elf.com",
-                                       "Aragorn"=>"strider@gondor.com",
-                                       "Frodo"=>"frodo_baggins@shire.com"
-                                     }
-                                   )
+      expect(@dictionary.keys).to match_array([ "Gandalf", "Legolas", "Aragorn", "Frodo"])
+
+      expect(@dictionary.values).to match_array(
+                                      ["gandalf_the_grey@wizard.com",
+                                       "legolas@elf.com",
+                                       "strider@gondor.com",
+                                       "frodo_baggins@shire.com"
+                                      ]
+                                    )
     end
   end
 
@@ -41,12 +43,14 @@ describe Dictionary do
       @dictionary.delete("Legolas")
 
       expect(@dictionary.size).to eql(3)
-      expect(@dictionary.items).to eql(
-                                     { "Gandalf"=>"gandalf_the_grey@wizard.com",
-                                       "Aragorn"=>"strider@gondor.com",
-                                       "Frodo"=>"frodo_baggins@shire.com"
-                                     }
-                                   )
+      expect(@dictionary.keys).to match_array([ "Gandalf", "Aragorn", "Frodo"])
+
+      expect(@dictionary.values).to match_array(
+                                      ["gandalf_the_grey@wizard.com",
+                                       "strider@gondor.com",
+                                       "frodo_baggins@shire.com"
+                                      ]
+                                    )
     end
   end
 
@@ -140,7 +144,7 @@ describe Dictionary do
 
       expect(@dictionary.size).to eql(4)
 
-      expect(@dictionary.keys).to match_array(["Gandalf", "Logolas", "Aragorn", "Frodo"])
+      expect(@dictionary.keys).to match_array(["Gandalf", "Legolas", "Aragorn", "Frodo"])
     end
 
     it 'returns empty array if there are no elements in the dictionary' do
