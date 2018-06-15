@@ -37,21 +37,14 @@ describe Dictionary do
       @dictionary.set("Frodo", "frodo_baggins@shire.com")
 
       expect(@dictionary.size).to eql(4)
-      expect(@dictionary.items).to eql(
-                                     { :Gandalf => "gandalf_the_grey@wizard.com",
-                                       :Legolas => "legolas@elf.com",
-                                       :Aragorn => "strider@gondor.com",
-                                       :Frodo => "frodo_baggins@shire.com"
-                                     }
-                                   )
 
-      @dictionary.remove("legolas")
+      @dictionary.delete("Legolas")
 
       expect(@dictionary.size).to eql(3)
       expect(@dictionary.items).to eql(
-                                     { :Gandalf => "gandalf_the_grey@wizard.com",
-                                       :Aragorn => "strider@gondor.com",
-                                       :Frodo => "frodo_baggins@shire.com"
+                                     { "Gandalf"=>"gandalf_the_grey@wizard.com",
+                                       "Aragorn"=>"strider@gondor.com",
+                                       "Frodo"=>"frodo_baggins@shire.com"
                                      }
                                    )
     end

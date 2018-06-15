@@ -20,4 +20,9 @@ class Dictionary
   def has?(key)
     @items.has_key?(key)
   end
+
+  def delete(key)
+    @items.delete_if {|item_key| item_key == key }
+  end
+
 end
