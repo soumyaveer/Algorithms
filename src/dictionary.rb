@@ -1,4 +1,4 @@
-class Dictionaries
+class Dictionary
   attr_accessor :items
 
   def initialize(items = {})

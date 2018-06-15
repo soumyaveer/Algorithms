@@ -1,8 +1,8 @@
-require_relative "../src/dictionaries"
+require_relative "../src/dictionary"
 
-describe Dictionaries do
+describe Dictionary do
   before do
-    @dictionary = Dictionaries.new
+    @dictionary = Dictionary.new
   end
 
   describe 'initialize' do
