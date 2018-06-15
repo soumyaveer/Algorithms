@@ -132,6 +132,10 @@ describe Dictionary do
 
       expect(@dictionary.size).to eql(4)
     end
+
+    it 'returns 0 when dictionary does not have any elements' do
+      expect(@dictionary.size).to eql(0)
+    end
   end
 
   describe 'keys' do

@@ -8,4 +8,8 @@ class Dictionary
   def empty?
     @items.empty?
   end
+
+  def size
+    @items.size
+  end
 end
