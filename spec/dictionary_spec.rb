@@ -162,12 +162,12 @@ describe Dictionary do
       expect(@dictionary.size).to eql(4)
 
       expect(@dictionary.values).to match_array(
-                                    ["gandalf_the_grey@wizard.com",
-                                     "legolas@elf.com",
-                                     "strider@gondor.com",
-                                     "frodo_baggins@shire.com"
-                                    ]
-                                  )
+                                      ["gandalf_the_grey@wizard.com",
+                                       "legolas@elf.com",
+                                       "strider@gondor.com",
+                                       "frodo_baggins@shire.com"
+                                      ]
+                                    )
     end
 
     it 'returns empty array if dictionary does not contain any elements' do
