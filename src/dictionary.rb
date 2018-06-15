@@ -28,4 +28,8 @@ class Dictionary
   def get(key)
     @items.has_key?(key) ? @items[key] : nil
   end
+
+  def clear
+    @items = {}
+  end
 end
