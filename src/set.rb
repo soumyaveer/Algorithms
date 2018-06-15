@@ -66,4 +66,17 @@ class Set
 
     difference_set.items
   end
+
+  def subset?(other_set)
+    if @items.size > other_set.items.size
+      return false
+    else
+      @items.each_value do |value|
+        if !other_set.items.include?(value)
+          return false
+        end
+      end
+    end
+    true
+  end
 end

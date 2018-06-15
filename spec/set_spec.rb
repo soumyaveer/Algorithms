@@ -141,4 +141,26 @@ describe Set do
       end
     end
   end
+
+  describe 'subset' do
+    it 'returns true if all the elements of one set are present in another set' do
+      @set.add(1)
+      @set.add(2)
+      @set.add(3)
+
+      other_set = Set.new({ 1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6 })
+
+      expect(@set.subset?(other_set)).to be_truthy
+    end
+
+    it 'returns false if all the elements of one set are not present in another set' do
+      @set.add(1)
+      @set.add(2)
+      @set.add(3)
+
+      other_set = Set.new({ 1 => 1, 2 => 2, 4 => 4, 5 => 5, 6 => 6 })
+
+      expect(@set.subset?(other_set)).to be_falsey
+    end
+  end
 end
