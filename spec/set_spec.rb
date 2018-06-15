@@ -118,5 +118,27 @@ describe Set do
         expect(@set.intersect(other_set)).to eql({})
       end
     end
+
+    describe 'difference' do
+      it 'returns the difference between two sets' do
+        @set.add(1)
+        @set.add(2)
+        @set.add(3)
+
+        other_set = Set.new({ 4 => 4, 5 => 5, 2 => 2, 3 => 3})
+
+        expect(@set.difference(other_set)).to eql({1 => 1})
+      end
+
+      it 'returns empty set if both the sets have same values' do
+        @set.add(1)
+        @set.add(2)
+        @set.add(3)
+
+        other_set = Set.new({ 1 => 1, 2 => 2, 3 => 3})
+
+        expect(@set.difference(other_set)).to eql({})
+      end
+    end
   end
 end

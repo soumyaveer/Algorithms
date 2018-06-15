@@ -56,4 +56,14 @@ class Set
 
     intersection_set.items
   end
+
+  def difference(other_set)
+    difference_set = Set.new
+
+    @items.each_value do |value|
+      other_set.items.include?(value) ? difference_set : difference_set.add(value)
+    end
+
+    difference_set.items
+  end
 end
