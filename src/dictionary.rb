@@ -12,4 +12,12 @@ class Dictionary
   def size
     @items.size
   end
+
+  def set(key, value)
+    @items[key] = value
+  end
+
+  def has?(key)
+    @items.has_key?(key)
+  end
 end

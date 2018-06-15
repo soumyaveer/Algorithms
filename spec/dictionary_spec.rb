@@ -20,10 +20,10 @@ describe Dictionary do
 
       expect(@dictionary.size).to eql(4)
       expect(@dictionary.items).to eql(
-                                     { :Gandalf => "gandalf_the_grey@wizard.com",
-                                       :Legolas => "legolas@elf.com",
-                                       :Aragorn => "strider@gondor.com",
-                                       :Frodo => "frodo_baggins@shire.com"
+                                     { "Gandalf"=>"gandalf_the_grey@wizard.com",
+                                       "Legolas"=>"legolas@elf.com",
+                                       "Aragorn"=>"strider@gondor.com",
+                                       "Frodo"=>"frodo_baggins@shire.com"
                                      }
                                    )
     end
