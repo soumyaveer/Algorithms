@@ -25,4 +25,7 @@ class Dictionary
     @items.delete_if {|item_key| item_key == key }
   end
 
+  def get(key)
+    @items.has_key?(key) ? @items[key] : nil
+  end
 end
