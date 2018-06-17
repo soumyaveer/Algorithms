@@ -1,16 +1,13 @@
 class Hash
   attr_accessor :items
 
-  def initialize( table_items = [])
-    @table_items = table_items
+  def get(key)
+    position = self.position_of(key)
+    @table_items[position]
   end
 
-  def size
-    length = 0
-    @table_items.each do |element|
-      element.nil? ? length : length += 1
-    end
-    length
+  def initialize( table_items = [])
+    @table_items = table_items
   end
 
   def position_of(key)
@@ -35,8 +32,12 @@ class Hash
     @table_items[position] = nil
   end
 
-  def get(key)
-    position = self.position_of(key)
-    @table_items[position]
+  def size
+    length = 0
+    @table_items.each do |element|
+      element.nil? ? length : length += 1
+    end
+    length
   end
+
 end
