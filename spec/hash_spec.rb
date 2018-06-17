@@ -25,7 +25,7 @@ describe Hash do
       @hash.put("Legolas", "legolas@elf.com")
       @hash.put("Aragorn", "strider@gondor.com")
       @hash.put("Frodo", "frodo_baggins@shire.com")
-
+      p @hash.inspect
       expect(@hash.size).to eql(4)
     end
   end
