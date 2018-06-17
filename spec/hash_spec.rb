@@ -11,6 +11,14 @@ describe Hash do
     end
   end
 
+  describe 'position_of' do
+    it 'returns the number to generate the position of each entry in the table' do
+      expect(@hash.position_of("Gandlaf")).to eql(19)
+      expect(@hash.position_of("John")).to eql(29)
+      expect(@hash.position_of("Tyrion")).to eql(16)
+    end
+  end
+
   describe 'put' do
     it 'adds a new item to the hash table' do
       @hash.put("Gandalf", "gandalf_the_grey@wizard.com")
