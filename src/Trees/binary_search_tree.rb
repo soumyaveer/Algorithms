@@ -27,5 +27,23 @@ module Trees
 
        left_level > right_level ? left_level : right_level
     end
+
+    def insert(key)
+      new_node = Trees::Node.new(key)
+
+      if @root == nil
+        @root = new_node
+      else
+        insert_node(@root, new_node)
+      end
+    end
+
+    def insert_node(node, new_node)
+      if new_node.key < node.key
+        node.left? ? insert_node(node.left, new_node) : node.left = new_node
+      else
+        node.right? ? insert_node(node.right, new_node) : node.right = new_node
+      end
+    end
   end
 end
