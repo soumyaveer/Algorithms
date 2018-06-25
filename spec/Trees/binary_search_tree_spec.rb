@@ -128,13 +128,43 @@ describe Trees::BinarySearchTree do
 
   describe 'min' do
     it 'returns minimum value/key in the tree' do
-      
+      @tree.insert(7)
+      @tree.insert(15)
+      @tree.insert(5)
+      @tree.insert(3)
+      @tree.insert(9)
+      @tree.insert(8)
+      @tree.insert(10)
+      @tree.insert(13)
+      @tree.insert(12)
+      @tree.insert(14)
+      @tree.insert(20)
+      @tree.insert(18)
+      @tree.insert(25)
+
+      expect(@tree.height).to eql(3)
+      expect(@tree.min).to eql(3)
     end
   end
 
   describe 'max' do
     it 'returns maximum value/Key in the tree' do
+      @tree.insert(7)
+      @tree.insert(15)
+      @tree.insert(5)
+      @tree.insert(3)
+      @tree.insert(9)
+      @tree.insert(8)
+      @tree.insert(10)
+      @tree.insert(13)
+      @tree.insert(12)
+      @tree.insert(14)
+      @tree.insert(20)
+      @tree.insert(18)
+      @tree.insert(25)
 
+      expect(@tree.height).to eql(3)
+      expect(@tree.max).to eql(25)
     end
   end
 
