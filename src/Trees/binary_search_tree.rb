@@ -87,6 +87,20 @@ module Trees
       to_s(values)
     end
 
+    def min
+      current_node = @root
+
+      return nil if current_node.nil?
+
+      while current_node&.left?
+        current_node = current_node.left
+      end
+
+      current_node.key
+    end
+
+    
+
     def to_s(keys)
       keys.flatten.join(" ")
     end
