@@ -55,11 +55,46 @@ describe Trees::BinarySearchTree do
 
   describe 'search' do
     it 'returns true if the key is found in the tree' do
+      @tree.insert(7)
+      @tree.insert(15)
+      @tree.insert(5)
+      @tree.insert(3)
+      @tree.insert(9)
+      @tree.insert(8)
+      @tree.insert(10)
+      @tree.insert(13)
+      @tree.insert(12)
+      @tree.insert(14)
+      @tree.insert(20)
+      @tree.insert(18)
+      @tree.insert(25)
+
+      expect(@tree.height).to eql(3)
+
+      expect(@tree.search(11)).to be_truthy
+      expect(@tree.search(8)).to be_truthy
+      expect(@tree.search(20)).to be_truthy
 
     end
 
     it 'returns false if the key is not found in the tree' do
+      @tree.insert(7)
+      @tree.insert(15)
+      @tree.insert(5)
+      @tree.insert(3)
+      @tree.insert(9)
+      @tree.insert(8)
+      @tree.insert(10)
+      @tree.insert(13)
+      @tree.insert(12)
+      @tree.insert(14)
+      @tree.insert(20)
+      @tree.insert(18)
+      @tree.insert(25)
 
+      expect(@tree.height).to eql(3)
+
+      expect(@tree.search(6)).to be_falsey
     end
   end
 
