@@ -45,5 +45,23 @@ module Trees
         node.right? ? insert_node(node.right, new_node) : node.right = new_node
       end
     end
+
+    def in_order_traversal(node)
+      values = []
+
+      if node.nil?
+        return []
+      else
+        values.push(in_order_traversal(node.left))
+        values.push(node.key)
+        values.push(in_order_traversal(node.right))
+      end
+
+      to_s(values)
+    end
+
+    def to_s(keys)
+      keys.join(" ")
+    end
   end
 end

@@ -65,7 +65,22 @@ describe Trees::BinarySearchTree do
 
   describe 'in_order_traversal' do
     it 'visits all nodes of the tree using in-order traversal' do
+      @tree.insert(7)
+      @tree.insert(15)
+      @tree.insert(5)
+      @tree.insert(3)
+      @tree.insert(9)
+      @tree.insert(8)
+      @tree.insert(10)
+      @tree.insert(13)
+      @tree.insert(12)
+      @tree.insert(14)
+      @tree.insert(20)
+      @tree.insert(18)
+      @tree.insert(25)
 
+      expect(@tree.height).to eql(3)
+      expect(@tree.in_order_traversal(@tree.root)).to eql(" 3  5  7  8  9  10  11  12  13  14  15  18  20  25 ")
     end
   end
 
