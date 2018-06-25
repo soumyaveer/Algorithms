@@ -22,7 +22,13 @@ describe Trees::BinarySearchTree do
 
     context 'when tree has more than one node' do
       it 'returns the height of the tree' do
+        @tree.insert(7)
+        @tree.insert(15)
+        @tree.insert(5)
+        @tree.insert(3)
+        @tree.insert(9)
 
+        expect(@tree.height).to eql(3)
       end
     end
   end
