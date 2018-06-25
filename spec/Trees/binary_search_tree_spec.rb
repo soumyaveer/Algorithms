@@ -204,8 +204,71 @@ describe Trees::BinarySearchTree do
   end
 
   describe 'remove' do
-    it 'removes the key from the tree' do
+    it 'removes the leaf node from the tree' do
+      @tree.insert(7)
+      @tree.insert(15)
+      @tree.insert(5)
+      @tree.insert(3)
+      @tree.insert(9)
+      @tree.insert(8)
+      @tree.insert(10)
+      @tree.insert(13)
+      @tree.insert(12)
+      @tree.insert(14)
+      @tree.insert(20)
+      @tree.insert(18)
+      @tree.insert(25)
 
+      expect(@tree.height).to eql(3)
+
+      @tree.remove(3)
+
+      expect(@tree.in_order_traversal(@tree.root)).to eql("5 7 8 9 10 11 12 13 14 15 18 20 25")
+
+    end
+
+    it 'removes the node with left and right child' do
+      @tree.insert(7)
+      @tree.insert(15)
+      @tree.insert(5)
+      @tree.insert(3)
+      @tree.insert(9)
+      @tree.insert(8)
+      @tree.insert(10)
+      @tree.insert(13)
+      @tree.insert(12)
+      @tree.insert(14)
+      @tree.insert(20)
+      @tree.insert(18)
+      @tree.insert(25)
+
+      expect(@tree.height).to eql(3)
+
+      @tree.remove(5)
+
+      expect(@tree.in_order_traversal(@tree.root)).to eql("3 7 8 9 10 11 12 13 14 15 18 20 25")
+    end
+
+    it 'removes the node with two children' do
+      @tree.insert(7)
+      @tree.insert(15)
+      @tree.insert(5)
+      @tree.insert(3)
+      @tree.insert(9)
+      @tree.insert(8)
+      @tree.insert(10)
+      @tree.insert(13)
+      @tree.insert(12)
+      @tree.insert(14)
+      @tree.insert(20)
+      @tree.insert(18)
+      @tree.insert(25)
+
+      expect(@tree.height).to eql(3)
+
+      @tree.remove(15)
+
+      expect(@tree.in_order_traversal(@tree.root)).to eql("3 7 8 9 10 11 12 13 14 18 20 25")
     end
   end
 end

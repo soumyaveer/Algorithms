@@ -116,7 +116,6 @@ module Trees
     end
 
     def search_node(current_node, key)
-
       return false if current_node.nil?
 
       if key < current_node.key
@@ -126,6 +125,7 @@ module Trees
       else
          true
       end
+
     end
 
     def to_s(keys)
