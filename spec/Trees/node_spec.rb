@@ -48,4 +48,32 @@ describe Trees::Node do
       end
     end
   end
+
+  describe 'left?' do
+    it 'returns true if the left node is present' do
+      left_node = Trees::Node.new(7)
+      @node.left = left_node
+
+      expect(@node.left).to eql(left_node)
+      expect(@node.left?).to be_truthy
+    end
+
+    it 'returns false if the left node is not present' do
+      expect(@node.left?).to be_falsey
+    end
+  end
+
+  describe 'right?' do
+    it 'returns true if the right node is present' do
+      right_node = Trees::Node.new(27)
+      @node.right = right_node
+      expect(@node.right).to eql(right_node)
+
+      expect(@node.right?).to be_truthy
+    end
+
+    it 'returns false if the right node is not present' do
+      expect(@node.right?).to be_falsey
+    end
+  end
 end

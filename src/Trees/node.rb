@@ -27,5 +27,13 @@ module Trees
     def empty?
       @key.nil?
     end
+
+    def right?
+      !@right.nil?
+    end
+
+    def left?
+      !@left.nil?
+    end
   end
 end
