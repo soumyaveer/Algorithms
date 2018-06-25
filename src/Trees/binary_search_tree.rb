@@ -102,13 +102,30 @@ module Trees
     def max
       current_node = @root
 
-      return nil if current_node.nil?
+      return if current_node.nil?
 
       while current_node&.right?
         current_node = current_node.right
       end
 
       current_node.key
+    end
+
+    def search(key)
+      search_node(@root, key)
+    end
+
+    def search_node(current_node, key)
+
+      return false if current_node.nil?
+
+      if key < current_node.key
+        search_node(current_node.left, key)
+      elsif key > current_node.key
+        search_node(current_node.right, key)
+      else
+         true
+      end
     end
 
     def to_s(keys)
