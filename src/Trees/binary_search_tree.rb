@@ -99,7 +99,17 @@ module Trees
       current_node.key
     end
 
-    
+    def max
+      current_node = @root
+
+      return nil if current_node.nil?
+
+      while current_node&.right?
+        current_node = current_node.right
+      end
+
+      current_node.key
+    end
 
     def to_s(keys)
       keys.flatten.join(" ")
