@@ -24,5 +24,22 @@ module Trees
       left_level > right_level ? left_level : right_level
     end
 
+    def pre_order_traversal(node)
+      values = []
+
+      if node.nil?
+        return []
+      else
+        values.push(node.key)
+        values.push(pre_order_traversal(node.left))
+        values.push(pre_order_traversal(node.right))
+      end
+
+      to_s(values)
+    end
+
+    def to_s(keys)
+      keys.flatten.join(" ")
+    end
   end
 end
