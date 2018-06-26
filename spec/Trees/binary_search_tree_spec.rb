@@ -223,8 +223,8 @@ describe Trees::BinarySearchTree do
 
       @tree.remove(3)
 
+      expect(@tree.search(3)).to be_falsey
       expect(@tree.in_order_traversal(@tree.root)).to eql("5 7 8 9 10 11 12 13 14 15 18 20 25")
-
     end
 
     it 'removes the node with left and right child' do
@@ -246,6 +246,7 @@ describe Trees::BinarySearchTree do
 
       @tree.remove(5)
 
+      expect(@tree.search(5)).to be_falsey
       expect(@tree.in_order_traversal(@tree.root)).to eql("3 7 8 9 10 11 12 13 14 15 18 20 25")
     end
 
@@ -268,7 +269,8 @@ describe Trees::BinarySearchTree do
 
       @tree.remove(15)
 
-      expect(@tree.in_order_traversal(@tree.root)).to eql("3 7 8 9 10 11 12 13 14 18 20 25")
+      expect(@tree.search(15)).to be_falsey
+      expect(@tree.in_order_traversal(@tree.root)).to eql("3 5 7 8 9 10 11 12 13 14 20 18 25")
     end
   end
 end

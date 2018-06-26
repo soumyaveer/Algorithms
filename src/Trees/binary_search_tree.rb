@@ -128,6 +128,51 @@ module Trees
 
     end
 
+    def remove(key)
+      @root = remove_node(@root, key)
+    end
+
+    def remove_node(node, key)
+      return nil if node.nil?
+
+      if key < node.key
+        node.left = remove_node(node.left, key)
+        return node
+
+      elsif key > node.key
+        node.right = remove_node(node.right, key)
+        return node
+
+      else
+        if !node.left? && !node.right?
+          node = nil
+          return node
+        end
+
+        if !node.left?
+          node = node.right
+          return node
+        end
+
+        if !node.right?
+          node = node.left
+          return node
+        end
+
+        min_node = self.find_min_node(node.right)
+        node.key = min_node.key
+        node.right = remove_node(node.right, min_node.key)
+        node
+      end
+    end
+
+    def find_min_node(node)
+      while node.nil? && node.left?
+        node = node.left
+      end
+      node
+    end
+
     def to_s(keys)
       keys.flatten.join(" ")
     end
