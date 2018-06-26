@@ -2,12 +2,15 @@ module Trees
   class BinarySearchTree
     attr_accessor :root
 
-    def initialize(key)
-      @root = Trees::Node.new(key)
-    end
-
     def empty?
       @root.key.nil?
+    end
+
+    def find_min_node(node)
+      while node.nil? && node.left?
+        node = node.left
+      end
+      node
     end
 
     def height
@@ -25,8 +28,14 @@ module Trees
         current_node = current_node.right
       end
 
-       left_level > right_level ? left_level : right_level
+      left_level > right_level ? left_level : right_level
     end
+
+
+    def initialize(key)
+      @root = Trees::Node.new(key)
+    end
+
 
     def insert(key)
       new_node = Trees::Node.new(key)
@@ -60,6 +69,30 @@ module Trees
       to_s(values)
     end
 
+    def max
+      current_node = @root
+
+      return if current_node.nil?
+
+      while current_node&.right?
+        current_node = current_node.right
+      end
+
+      current_node.key
+    end
+
+    def min
+      current_node = @root
+
+      return nil if current_node.nil?
+
+      while current_node&.left?
+        current_node = current_node.left
+      end
+
+      current_node.key
+    end
+
     def pre_order_traversal(node)
       values = []
 
@@ -85,47 +118,6 @@ module Trees
       end
 
       to_s(values)
-    end
-
-    def min
-      current_node = @root
-
-      return nil if current_node.nil?
-
-      while current_node&.left?
-        current_node = current_node.left
-      end
-
-      current_node.key
-    end
-
-    def max
-      current_node = @root
-
-      return if current_node.nil?
-
-      while current_node&.right?
-        current_node = current_node.right
-      end
-
-      current_node.key
-    end
-
-    def search(key)
-      search_node(@root, key)
-    end
-
-    def search_node(current_node, key)
-      return false if current_node.nil?
-
-      if key < current_node.key
-        search_node(current_node.left, key)
-      elsif key > current_node.key
-        search_node(current_node.right, key)
-      else
-         true
-      end
-
     end
 
     def remove(key)
@@ -166,13 +158,23 @@ module Trees
       end
     end
 
-    def find_min_node(node)
-      while node.nil? && node.left?
-        node = node.left
-      end
-      node
+    def search(key)
+      search_node(@root, key)
     end
 
+    def search_node(current_node, key)
+      return false if current_node.nil?
+
+      if key < current_node.key
+        search_node(current_node.left, key)
+      elsif key > current_node.key
+        search_node(current_node.right, key)
+      else
+         true
+      end
+
+    end
+    
     def to_s(keys)
       keys.flatten.join(" ")
     end
