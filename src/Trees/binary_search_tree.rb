@@ -170,11 +170,11 @@ module Trees
       elsif key > current_node.key
         search_node(current_node.right, key)
       else
-         true
+        true
       end
 
     end
-    
+
     def to_s(keys)
       keys.flatten.join(" ")
     end
