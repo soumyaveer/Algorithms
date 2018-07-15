@@ -28,6 +28,7 @@ describe Trees::BinarySearchTree do
         @tree.insert(3)
         @tree.insert(9)
 
+        p @tree.inspect
         expect(@tree.height).to eql(3)
       end
     end

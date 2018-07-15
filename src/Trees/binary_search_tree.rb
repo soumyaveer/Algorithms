@@ -14,23 +14,13 @@ module Trees
     end
 
     def height
-      current_node = @root
-      left_level = 0
-      right_level = 0
-
-      while current_node.left?
-        left_level += 1
-        current_node = current_node.left
-      end
-
-      while current_node.right?
-        right_level += 1
-        current_node = current_node.right
-      end
-
-      left_level > right_level ? left_level : right_level
+      # height in binary tree start with 0, i.e the binary tree with only root has height 0
+      max_height(@root) - 1
     end
 
+    def max_height(node)
+      !node.nil? ? 1 + [max_height(node.left), max_height(node.right)].max : 0
+    end
 
     def initialize(key)
       @root = Trees::Node.new(key)

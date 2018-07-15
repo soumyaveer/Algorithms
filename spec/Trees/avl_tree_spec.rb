@@ -14,12 +14,13 @@ describe Trees::AVLTree do
 
   describe 'height' do
     it 'returns the height of the AVL tree' do
-      @avl_tree.insert(@avl_tree.root, 30)
-      @avl_tree.insert(@avl_tree.root, 70)
-      @avl_tree.insert(@avl_tree.root, 60)
-      @avl_tree.insert(@avl_tree.root, 80)
-      @avl_tree.insert(@avl_tree.root, 90)
+      @avl_tree.insert(30)
+      @avl_tree.insert(70)
+      @avl_tree.insert(60)
+      @avl_tree.insert(80)
+      @avl_tree.insert(90)
 
+      p @avl_tree
       expect(@avl_tree.height).to eql(3)
     end
   end

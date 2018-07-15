@@ -7,21 +7,12 @@ module Trees
     end
 
     def height
-      current_node = @root
-      left_level = 1
-      right_level = 1
+      # height of avl tree start with 1. an avl tree with only root has height 1
+      max_height(@root)
+    end
 
-      while current_node.left?
-        left_level += 1
-        current_node = current_node.left
-      end
-
-      while current_node.right?
-        right_level += 1
-        current_node = current_node.right
-      end
-
-      left_level > right_level ? left_level : right_level
+    def max_height(node)
+      !node.nil? ? 1 + [max_height(node.left), max_height(node.right)].max : 0
     end
 
     def pre_order_traversal(node)
@@ -104,6 +95,7 @@ module Trees
     end
 
     def rotation_rr(node)
+      p "--"
       current_node = node.right
       node.right = current_node.left
       current_node.left = node
