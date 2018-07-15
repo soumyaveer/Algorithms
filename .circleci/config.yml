@@ -4,9 +4,7 @@ jobs:
     working_directory: ~/app
 
     docker:
-      - image: circleci/ruby:2.3.4-node-browsers
-        environment:
-          RACK_ENV: test
+      - image: circleci/ruby:2.3.4
 
     steps:
       - checkout
