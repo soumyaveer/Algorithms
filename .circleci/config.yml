@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/app
+
+    docker:
+      - image: circleci/ruby:2.3.4-node-browsers
+        environment:
+          RACK_ENV: test
+
+    steps:
+      - checkout
+      - run: bundle install
+      - run: bundle exec rake spec
