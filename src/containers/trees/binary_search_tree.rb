@@ -132,17 +132,17 @@ module Containers
             return node
           end
 
-          if !node.left?
+          unless node.left?
             node = node.right
             return node
           end
 
-          if !node.right?
+          unless node.right?
             node = node.left
             return node
           end
 
-          min_node = self.find_min_node(node.right)
+          min_node = find_min_node(node.right)
           node.key = min_node.key
           node.right = remove_node(node.right, min_node.key)
           node
@@ -163,11 +163,10 @@ module Containers
         else
           true
         end
-
       end
 
       def to_s(keys)
-        keys.flatten.join(" ")
+        keys.flatten.join(' ')
       end
     end
   end
