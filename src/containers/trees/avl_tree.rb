@@ -7,18 +7,17 @@ module Containers
         @root = Node.new(key)
       end
 
+      # height of avl tree start with 1. an avl tree with only root has height 1
       def height
-        # height of avl tree start with 1. an avl tree with only root has height 1
         max_height(@root)
       end
 
       def max_height(node)
-        !node.nil? ? 1 + [max_height(node.left), max_height(node.right)].max : 0
+        !node.nil? ? 1 + [max_height(node.left), max_height(node.right)].max : -1
       end
 
       def pre_order_traversal(node)
         values = []
-
         if node.nil?
           return []
         else
@@ -40,47 +39,37 @@ module Containers
         elsif element < node.key
           node.left = insert_node(node.left, element)
 
-          if !node.left?
-            if height_node(node.left) - height_node(node.right) > 1
-              if element < node.left.key
-                node = rotation_ll(node)
-              else
-                node = rotation_lr(node)
-              end
+          if height_difference_greater_then_1?(node.left, node.right)
+            if element < node.left.key
+              node = rotation_ll(node)
+            else
+              node = rotation_lr(node)
             end
           end
+
         elsif element > node.key
           node.right = insert_node(node.right, element)
 
-          if !node.right?
-            if height_node(node.right) - height_node(node.left) > 1
-              if element > node.right.key
-                node = rotation_rr(node)
-              else
-                node = rotation_rl(node)
-              end
+          if height_difference_greater_then_1?(node.right, node.left)
+
+            if element > node.right.key
+              node = rotation_rr(node)
+            else
+              node = rotation_rl(node)
             end
           end
         end
-
         node
       end
 
       def insert(element)
-        node = @root
-        insert_node(node, element)
+        @root = insert_node(@root, element)
       end
 
-      def height_node(node)
-        if node.nil?
-          return -1
-        else
-          return max(height_node(node.left), height_node(node.right)) + 1
-        end
-      end
+      private
 
-      def max(*values)
-        values.max
+      def height_difference_greater_than_1?(left_subtree, right_subtree)
+        (max_height(left_subtree) - max_height(right_subtree)).abs > 1
       end
 
       def rotation_ll(node)
