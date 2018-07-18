@@ -22,7 +22,6 @@ module Containers
           @avl_tree.insert(80)
           @avl_tree.insert(90)
 
-          p @avl_tree
           expect(@avl_tree.height).to eql(2)
         end
       end
@@ -54,7 +53,6 @@ module Containers
             @avl_tree.insert(5)
 
             expect(@avl_tree.height).to eql(2)
-            p @avl_tree
 
             expect(@avl_tree.pre_order_traversal(@avl_tree.root)).to eql("30 10 5 50 40 70")
           end

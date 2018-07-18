@@ -39,7 +39,7 @@ module Containers
         elsif element < node.key
           node.left = insert_node(node.left, element)
 
-          if height_difference_greater_then_1?(node.left, node.right)
+          if height_difference_greater_than_1?(node.left, node.right)
             if element < node.left.key
               node = rotation_ll(node)
             else
@@ -50,7 +50,7 @@ module Containers
         elsif element > node.key
           node.right = insert_node(node.right, element)
 
-          if height_difference_greater_then_1?(node.right, node.left)
+          if height_difference_greater_than_1?(node.right, node.left)
 
             if element > node.right.key
               node = rotation_rr(node)
@@ -85,7 +85,6 @@ module Containers
       end
 
       def rotation_rr(node)
-        p "--"
         current_node = node.right
         node.right = current_node.left
         current_node.left = node
