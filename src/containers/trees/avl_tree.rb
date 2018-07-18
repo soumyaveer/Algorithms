@@ -4,34 +4,17 @@ module Containers
     class AVLTree
       attr_accessor :root
 
-      def initialize(key)
-        @root = Node.new(key)
-      end
-
       # height of avl tree start with 1. an avl tree with only root has height 1
       def height
         max_height(@root)
       end
 
-      def max_height(node)
-        node ? 1 + [max_height(node.left), max_height(node.right)].max : -1
+      def initialize(key)
+        @root = Node.new(key)
       end
 
-      def pre_order_traversal(node)
-        values = []
-        unless node
-          return []
-        else
-          values.push(node.key)
-          values.push(pre_order_traversal(node.left))
-          values.push(pre_order_traversal(node.right))
-        end
-
-        to_s(values)
-      end
-
-      def to_s(keys)
-        keys.flatten.join(' ')
+      def insert(element)
+        @root = insert_node(@root, element)
       end
 
       def insert_node(node, element)
@@ -63,8 +46,25 @@ module Containers
         node
       end
 
-      def insert(element)
-        @root = insert_node(@root, element)
+      def max_height(node)
+        node ? 1 + [max_height(node.left), max_height(node.right)].max : -1
+      end
+
+      def pre_order_traversal(node)
+        values = []
+        unless node
+          return []
+        else
+          values.push(node.key)
+          values.push(pre_order_traversal(node.left))
+          values.push(pre_order_traversal(node.right))
+        end
+
+        to_s(values)
+      end
+
+      def to_s(keys)
+        keys.flatten.join(' ')
       end
 
       private

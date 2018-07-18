@@ -1,3 +1,4 @@
+# binary search tree algorithm
 module Containers
   module Trees
     class BinarySearchTree
