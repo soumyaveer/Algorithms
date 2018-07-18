@@ -14,12 +14,12 @@ module Containers
       end
 
       def max_height(node)
-        !node.nil? ? 1 + [max_height(node.left), max_height(node.right)].max : -1
+        node ? 1 + [max_height(node.left), max_height(node.right)].max : -1
       end
 
       def pre_order_traversal(node)
         values = []
-        if node.nil?
+        unless node
           return []
         else
           values.push(node.key)
@@ -31,7 +31,7 @@ module Containers
       end
 
       def to_s(keys)
-        keys.flatten.join(" ")
+        keys.flatten.join(' ')
       end
 
       def insert_node(node, element)
