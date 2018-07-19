@@ -1,4 +1,4 @@
-require_relative "../../src/containers/graph"
+require_relative '../../src/containers/graph'
 
 module Containers
   describe Graph do
@@ -8,7 +8,6 @@ module Containers
 
     describe 'initialize' do
       it 'creates a new graph data structure' do
-        
       end
     end
   end
