@@ -28,7 +28,6 @@ module Containers
 
     def to_s
       graph = ""
-      neighbors = []
       vertices.each do |vertex|
         graph += "#{vertex} -> "
         neighbors = adj_list.get(vertex)
