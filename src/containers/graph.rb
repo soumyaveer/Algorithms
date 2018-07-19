@@ -20,6 +20,13 @@ module Containers
       vertices.push(element)
       adj_list.set(element, [])
     end
+
+    def add_edge(vertex_a, vertex_b)
+      adj_list.get(vertex_a).push(vertex_b)
+      adj_list.get(vertex_b).push(vertex_a)
+    end
+
+    
   end
 end
 
