@@ -88,5 +88,34 @@ module Containers
         expect(@graph.to_s).to eql("A -> B C D \nB -> A E F \nC -> A D G \nD -> A C G H \nE -> B I \nF -> B \nG -> C D \nH -> D \nI -> E \n")
       end
     end
+
+    describe 'breadth_first_search' do
+      before do
+        @graph.add_vertex('A')
+        @graph.add_vertex('B')
+        @graph.add_vertex('C')
+        @graph.add_vertex('D')
+        @graph.add_vertex('E')
+        @graph.add_vertex('F')
+        @graph.add_vertex('G')
+        @graph.add_vertex('H')
+        @graph.add_vertex('I')
+
+        @graph.add_edge('A', 'B')
+        @graph.add_edge('A', 'C')
+        @graph.add_edge('A', 'D')
+        @graph.add_edge('C', 'D')
+        @graph.add_edge('C', 'G')
+        @graph.add_edge('D', 'G')
+        @graph.add_edge('D', 'H')
+        @graph.add_edge('B', 'E')
+        @graph.add_edge('B', 'F')
+        @graph.add_edge('E', 'I')
+      end
+      it 'traverse the algorithm from first specified vertex and visits all its adjacent neighbors' do
+        visited_vertices = "A -> B -> C -> D -> E -> F -> G ->H ->I"
+        expect(@graph.breadth_first_search(@graph.vertices[0])).to eql(visited_vertices)
+      end
+    end
   end
 end
