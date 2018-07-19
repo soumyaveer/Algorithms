@@ -55,7 +55,7 @@ module Containers
         expect(@graph.empty?).to be_falsey
         expect(@graph.size_of_vertices).to eql(3)
 
-        expect(@graph.to_s).to eql("A -> B C")
+        expect(@graph.to_s).to eql("A -> B C \nB -> A \nC -> A \n")
       end
     end
 
@@ -85,15 +85,7 @@ module Containers
         expect(@graph.empty?).to be_falsey
         expect(@graph.size_of_vertices).to eql(9)
 
-        expect(@graph.to_s).to eql("A -> B C D \n
-                                    B -> A E F \n
-                                    C -> A D G \n
-                                    D -> A C G H \n
-                                    E -> B I \n
-                                    F -> B \n
-                                    G -> C D\n
-                                    H -> D \n
-                                    I -> E")
+        expect(@graph.to_s).to eql("A -> B C D \nB -> A E F \nC -> A D G \nD -> A C G H \nE -> B I \nF -> B \nG -> C D \nH -> D \nI -> E \n")
       end
     end
   end

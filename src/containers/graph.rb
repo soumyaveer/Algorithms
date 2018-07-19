@@ -26,7 +26,19 @@ module Containers
       adj_list.get(vertex_b).push(vertex_a)
     end
 
-    
+    def to_s
+      graph = ""
+      neighbors = []
+      vertices.each do |vertex|
+        graph += "#{vertex} -> "
+        neighbors = adj_list.get(vertex)
+        neighbors.each do |neighbor|
+          graph += "#{neighbor} "
+        end
+        graph += "\n"
+      end
+      graph
+    end
   end
 end
 
