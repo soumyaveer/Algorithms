@@ -38,6 +38,44 @@ module Containers
       end
       graph
     end
+
+    def breadth_first_search(vertex)
+      color = initialize_color
+      queue = Queue.new
+      queue.enqueue(vertex)
+      visited_vertices = []
+
+      until queue.empty?
+        discovered_vertex = queue.dequeue
+        neighbors = adj_list.get(discovered_vertex)
+        color[discovered_vertex] = 'grey'
+
+        neighbors.each do |neighbor|
+          if color[neighbor] == 'white'
+            color[neighbor] = 'grey'
+            queue.enqueue(neighbor)
+          end
+        end
+
+        color[discovered_vertex] = 'black'
+        visited_vertices << discovered_vertex
+      end
+      visited_vertices
+    end
+
+    def display_node(visited_vertices)
+      visited_vertices.join(" -> ")
+    end
+
+    private
+
+    def initialize_color
+      color = {}
+      vertices.each do |vertex|
+        color[vertex] = 'white'
+      end
+      color
+    end
   end
 end
 

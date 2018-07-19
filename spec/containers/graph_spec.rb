@@ -113,8 +113,9 @@ module Containers
         @graph.add_edge('E', 'I')
       end
       it 'traverse the algorithm from first specified vertex and visits all its adjacent neighbors' do
-        visited_vertices = "A -> B -> C -> D -> E -> F -> G ->H ->I"
-        expect(@graph.breadth_first_search(@graph.vertices[0])).to eql(visited_vertices)
+        expected_visited_vertices = "A -> B -> C -> D -> E -> F -> G -> H -> I"
+        visited_vertices = @graph.breadth_first_search(@graph.vertices[0])
+        expect(@graph.display_node(visited_vertices)).to eql(expected_visited_vertices)
       end
     end
   end
