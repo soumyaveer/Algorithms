@@ -8,8 +8,8 @@ module Containers
 
     describe 'initialize' do
       it 'creates a new graph data structure' do
-        expect(@graph.size_of_vertices).to eql(0)
         expect(@graph.empty?).to be_truthy
+        expect(@graph.size_of_vertices).to eql(0)
       end
     end
 

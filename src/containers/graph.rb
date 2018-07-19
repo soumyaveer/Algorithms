@@ -16,8 +16,9 @@ module Containers
       vertices.count
     end
 
-    def add_vertex(vertex)
-
+    def add_vertex(element)
+      vertices.push(element)
+      adj_list.set(element, [])
     end
   end
 end
