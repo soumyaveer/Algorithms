@@ -115,6 +115,7 @@ module Containers
       it 'traverse the algorithm from first specified vertex and visits all its adjacent neighbors' do
         expected_visited_vertices = "A -> B -> C -> D -> E -> F -> G -> H -> I"
         visited_vertices = @graph.breadth_first_search(@graph.vertices[0])
+        
         expect(@graph.display_node(visited_vertices)).to eql(expected_visited_vertices)
       end
     end

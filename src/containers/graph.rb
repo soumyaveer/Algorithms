@@ -27,13 +27,11 @@ module Containers
     end
 
     def to_s
-      graph = ""
+      graph = ''
       vertices.each do |vertex|
         graph += "#{vertex} -> "
         neighbors = adj_list.get(vertex)
-        neighbors.each do |neighbor|
-          graph += "#{neighbor} "
-        end
+        neighbors.each {|neighbor| graph += "#{neighbor} "}
         graph += "\n"
       end
       graph
@@ -56,7 +54,6 @@ module Containers
             queue.enqueue(neighbor)
           end
         end
-
         color[discovered_vertex] = 'black'
         visited_vertices << discovered_vertex
       end
@@ -64,7 +61,7 @@ module Containers
     end
 
     def display_node(visited_vertices)
-      visited_vertices.join(" -> ")
+      visited_vertices.join(' -> ')
     end
 
     private
