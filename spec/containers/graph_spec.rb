@@ -112,10 +112,42 @@ module Containers
         @graph.add_edge('B', 'F')
         @graph.add_edge('E', 'I')
       end
-      it 'traverse the algorithm from first specified vertex and visits all its adjacent neighbors' do
+      it 'traverses from first specified vertex and visits all its adjacent neighbors' do
         expected_visited_vertices = "A -> B -> C -> D -> E -> F -> G -> H -> I"
-        visited_vertices = @graph.breadth_first_search(@graph.vertices[0])
-        
+        visited_vertices = @graph.breadth_first_search(@graph.vertices.first)
+
+        expect(@graph.display_node(visited_vertices)).to eql(expected_visited_vertices)
+      end
+    end
+
+    describe 'depth_first_search' do
+      before do
+        @graph.add_vertex('A')
+        @graph.add_vertex('B')
+        @graph.add_vertex('C')
+        @graph.add_vertex('D')
+        @graph.add_vertex('E')
+        @graph.add_vertex('F')
+        @graph.add_vertex('G')
+        @graph.add_vertex('H')
+        @graph.add_vertex('I')
+
+        @graph.add_edge('A', 'B')
+        @graph.add_edge('A', 'C')
+        @graph.add_edge('A', 'D')
+        @graph.add_edge('C', 'D')
+        @graph.add_edge('C', 'G')
+        @graph.add_edge('D', 'G')
+        @graph.add_edge('D', 'H')
+        @graph.add_edge('B', 'E')
+        @graph.add_edge('B', 'F')
+        @graph.add_edge('E', 'I')
+      end
+
+      it 'traverses from first specified vertex and follows the path untill last vertex of path is visited' do
+        expected_visited_vertices = "A -> B -> E -> I -> F -> C -> D -> G -> H"
+        visited_vertices = @graph.depth_first_search(@graph.vertices.first)
+
         expect(@graph.display_node(visited_vertices)).to eql(expected_visited_vertices)
       end
     end
