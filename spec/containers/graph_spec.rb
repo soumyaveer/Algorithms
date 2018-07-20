@@ -146,7 +146,7 @@ module Containers
 
       it 'traverses from first specified vertex and follows the path untill last vertex of path is visited' do
         expected_visited_vertices = "A -> B -> E -> I -> F -> C -> D -> G -> H"
-        visited_vertices = @graph.depth_first_search(@graph.vertices.first)
+        visited_vertices = @graph.depth_first_search
 
         expect(@graph.display_node(visited_vertices)).to eql(expected_visited_vertices)
       end

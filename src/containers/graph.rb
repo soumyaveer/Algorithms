@@ -60,6 +60,32 @@ module Containers
       visited_vertices
     end
 
+    def depth_first_search
+      visited_vertices = []
+      color = initialize_color
+      vertices.each do |vertex|
+        if color[vertex] == 'white'
+         depth_first_search_visit(vertex, color)
+        end
+        visited_vertices << vertex
+
+      end
+      p visited_vertices
+    end
+
+    def depth_first_search_visit(discovered_vertex, color)
+      color[discovered_vertex] = 'grey'
+      
+      neighbors = adj_list.get(discovered_vertex)
+      neighbors.each do |neighbor|
+        if color[neighbor] == 'white'
+          depth_first_search_visit(neighbor, color)
+        end
+      end
+      color[discovered_vertex] = 'black'
+      discovered_vertex
+    end
+
     def display_node(visited_vertices)
       visited_vertices.join(' -> ')
     end
