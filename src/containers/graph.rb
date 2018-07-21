@@ -3,19 +3,6 @@ module Containers
   class Graph
     attr_accessor :vertices, :adj_list
 
-    def initialize
-      @vertices = []
-      @adj_list = Dictionary.new
-    end
-
-    def empty?
-      vertices.empty?
-    end
-
-    def size_of_vertices
-      vertices.count
-    end
-
     def add_vertex(element)
       vertices.push(element)
       adj_list.set(element, [])
@@ -24,6 +11,49 @@ module Containers
     def add_edge(vertex_a, vertex_b)
       adj_list.get(vertex_a).push(vertex_b)
       adj_list.get(vertex_b).push(vertex_a)
+    end
+
+    # breadth first search traversing
+    def breadth_first_search(vertex)
+      color = initialize_color
+      queue = Queue.new
+      queue.enqueue(vertex)
+      visited_vertices = []
+
+      until queue.empty?
+        discovered_vertex = mark_vertices_discovered(color, queue)
+        color[discovered_vertex] = 'black'
+        visited_vertices << discovered_vertex
+      end
+      visited_vertices
+    end
+
+    # depth first search traversing
+    def depth_first_search
+      @visited_vertices = []
+      color = initialize_color
+
+      vertices.each do |vertex|
+        depth_first_search_visit(vertex, color)  if color[vertex] == 'white'
+      end
+      @visited_vertices
+    end
+
+    def display_node(visited_vertices)
+      visited_vertices.join(' -> ')
+    end
+
+    def empty?
+      vertices.empty?
+    end
+
+    def initialize
+      @vertices = []
+      @adj_list = Dictionary.new
+    end
+
+    def size_of_vertices
+      vertices.count
     end
 
     def to_s
@@ -37,60 +67,18 @@ module Containers
       graph
     end
 
-    def breadth_first_search(vertex)
-      color = initialize_color
-      queue = Queue.new
-      queue.enqueue(vertex)
-      visited_vertices = []
-
-      until queue.empty?
-        discovered_vertex = queue.dequeue
-        neighbors = adj_list.get(discovered_vertex)
-        color[discovered_vertex] = 'grey'
-
-        neighbors.each do |neighbor|
-          if color[neighbor] == 'white'
-            color[neighbor] = 'grey'
-            queue.enqueue(neighbor)
-          end
-        end
-        color[discovered_vertex] = 'black'
-        visited_vertices << discovered_vertex
-      end
-      visited_vertices
-    end
-
-    def depth_first_search
-      visited_vertices = []
-      color = initialize_color
-      vertices.each do |vertex|
-        if color[vertex] == 'white'
-         depth_first_search_visit(vertex, color)
-        end
-        visited_vertices << vertex
-
-      end
-      p visited_vertices
-    end
+    private
 
     def depth_first_search_visit(discovered_vertex, color)
       color[discovered_vertex] = 'grey'
-      
+      @visited_vertices << discovered_vertex
       neighbors = adj_list.get(discovered_vertex)
+
       neighbors.each do |neighbor|
-        if color[neighbor] == 'white'
-          depth_first_search_visit(neighbor, color)
-        end
+        depth_first_search_visit(neighbor, color) if color[neighbor] == 'white'
       end
       color[discovered_vertex] = 'black'
-      discovered_vertex
     end
-
-    def display_node(visited_vertices)
-      visited_vertices.join(' -> ')
-    end
-
-    private
 
     def initialize_color
       color = {}
@@ -98,6 +86,20 @@ module Containers
         color[vertex] = 'white'
       end
       color
+    end
+
+    def mark_vertices_discovered(color, queue)
+      discovered_vertex = queue.dequeue
+      neighbors = adj_list.get(discovered_vertex)
+      color[discovered_vertex] = 'grey'
+
+      neighbors.each do |neighbor|
+        if color[neighbor] == 'white'
+          color[neighbor] = 'grey'
+          queue.enqueue(neighbor)
+        end
+      end
+      discovered_vertex
     end
   end
 end
