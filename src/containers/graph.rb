@@ -34,7 +34,7 @@ module Containers
       color = initialize_color
 
       vertices.each do |vertex|
-        depth_first_search_visit(vertex, color)  if color[vertex] == 'white'
+        depth_first_search_visit(vertex, color) if color[vertex] == 'white'
       end
       @visited_vertices
     end
@@ -61,7 +61,7 @@ module Containers
       vertices.each do |vertex|
         graph += "#{vertex} -> "
         neighbors = adj_list.get(vertex)
-        neighbors.each {|neighbor| graph += "#{neighbor} "}
+        neighbors.each { |neighbor| graph += "#{neighbor} " }
         graph += "\n"
       end
       graph
@@ -103,4 +103,3 @@ module Containers
     end
   end
 end
-
