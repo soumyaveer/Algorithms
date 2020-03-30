@@ -15,5 +15,12 @@ module Algorithms
         expect(actual_output).to eq(expected_output)
       end
     end
+
+    context '#insertion' do
+      it 'sorts the elements in ascending order' do
+        actual_output = Sorting.new(input).insertion
+        expect(actual_output).to eq(expected_output)
+      end
+    end
   end
 end
