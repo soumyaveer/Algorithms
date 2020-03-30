@@ -1,3 +1,4 @@
+# specs for sorting algorithms
 module Algorithms
   describe Sorting do
     let(:input) { [4, 3, 6, 7, 1, 2] }
