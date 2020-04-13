@@ -84,5 +84,37 @@ module Algorithms
     end
   end
 
+  def quick_sort
+    sort(numbers, 0, numbers.length - 1)
+  end
 
+  def sort(numbers, start, last)
+    if start <= last
+      p_index = partition(numbers, start, last)
+      sort(numbers, start, p_index - 1)
+      sort(numbers, p_index + 1, last)
+    end
+    numbers
+  end
+
+  def partition(numbers, start, last)
+    pivot = numbers[last]
+    p_index = start
+    i = start
+    while i < last
+      if numbers[i] <= pivot
+        swap(numbers, i, p_index)
+        p_index += 1
+      end
+      i += 1
+    end
+    swap(numbers, p_index, last)
+    p_index
+  end
+
+  def swap(numbers, i_left, i_right)
+    temp = numbers[i_left]
+    numbers[i_left] = numbers[i_right]
+    numbers[i_right] = temp
+  end
 end

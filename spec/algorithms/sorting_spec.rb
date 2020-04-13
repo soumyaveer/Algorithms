@@ -30,5 +30,12 @@ module Algorithms
         expect(actual_output).to eq(expected_output)
       end
     end
+
+    context '#quicksort' do
+      it 'sorts elements in ascending order' do
+        actual_output = Sorting.new(input).merge_sort
+        expect(actual_output).to eq(expected_output)
+      end
+    end
   end
 end
